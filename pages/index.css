@@ -1,0 +1,19 @@
+/*Vendor*/
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+
+/*page bl*/
+@import url(../blocks/page/page.css);
+/*page el*/
+@import url(../blocks/page/__header/page__header.css);
+
+/*header bl*/
+@import url(../blocks/header/header.css);
+/*header el*/
+@import url(../blocks/header/__line/header__line.css);
+@import url(../blocks/header/__logo/header__logo.css);
+
+/*profile bl*/
+@import url(../blocks/profile/profile.css);
+/*profile el*/
+@import url(../blocks/profile/__avatar/profile__avatar.css);
