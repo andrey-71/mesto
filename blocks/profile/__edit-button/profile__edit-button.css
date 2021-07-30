@@ -1,0 +1,16 @@
+.profile__edit-button {
+  grid-area: edit-button;
+  align-self: flex-end;
+  margin-bottom: 7px;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  background: url(../../../images/profile-icon-edit.svg) center center no-repeat;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: opacity .6s;
+}
+
+.profile__edit-button:hover {
+  opacity: .6;
+}
