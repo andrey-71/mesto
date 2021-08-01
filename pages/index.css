@@ -27,3 +27,14 @@
 @import url(../blocks/profile/__job/profile__job.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
+
+/*photo-gallery bl*/
+@import url(../blocks/photo-gallery/photo-gallery.css);
+/*photo bl*/
+@import url(../blocks/photo/photo.css);
+/*photo el*/
+@import url(../blocks/photo/__image/photo__image.css);
+@import url(../blocks/photo/__info/photo__info.css);
+@import url(../blocks/photo/__caption/photo__caption.css);
+@import url(../blocks/photo/__icon-heart/photo__icon-heart.css);
+
