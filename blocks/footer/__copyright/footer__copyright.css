@@ -1,4 +1,4 @@
-.photo__caption {
+.footer__copyright {
   margin: 0;
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -6,7 +6,15 @@
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 1.21;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  color: #545454;
+}
+
+@media screen and (max-width: 767px) {
+  .footer__copyright {
+    font-size: 14px;
+    line-height: 1.21;
+  }
 }

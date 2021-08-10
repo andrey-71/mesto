@@ -7,6 +7,7 @@
 /*page el*/
 @import url(../blocks/page/__header/page__header.css);
 @import url(../blocks/page/__content/page__content.css);
+@import url(../blocks/page/__footer/page__footer.css);
 
 /*header bl*/
 @import url(../blocks/header/header.css);
@@ -38,3 +39,7 @@
 @import url(../blocks/photo/__caption/photo__caption.css);
 @import url(../blocks/photo/__icon-heart/photo__icon-heart.css);
 
+/*footer bl*/
+@import url(../blocks/footer/footer.css);
+/*footer el*/
+@import url(../blocks/footer/__copyright/footer__copyright.css);
