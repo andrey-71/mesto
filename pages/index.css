@@ -37,7 +37,19 @@
 @import url(../blocks/photo/__image/photo__image.css);
 @import url(../blocks/photo/__info/photo__info.css);
 @import url(../blocks/photo/__caption/photo__caption.css);
-@import url(../blocks/photo/__icon-heart/photo__icon-heart.css);
+@import url(../blocks/photo/__heart/photo__heart.css);
+/*photo mod*/
+@import url(../blocks/photo/__heart/_active/photo__heart_active.css);
+
+/*popup bl*/
+@import url(../blocks/popup/popup.css);
+/*popup el*/
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__name/popup__name.css);
+@import url(../blocks/popup/__job/popup__job.css);
+@import url(../blocks/popup/__save-button/popup__save-button.css);
+@import url(../blocks/popup/__close/popup__close.css);
 
 /*footer bl*/
 @import url(../blocks/footer/footer.css);
