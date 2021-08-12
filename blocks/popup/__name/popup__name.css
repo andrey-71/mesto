@@ -12,3 +12,8 @@
   font-size: 14px;
   line-height: 1.21;
 }
+
+
+.popup__name:focus {
+  outline: 1px solid red;
+}
