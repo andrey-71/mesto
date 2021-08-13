@@ -1,7 +1,7 @@
 # Place
 
 Sprint 4 (29-Olive)
-**[Проект на GitHub Pages](https://andrey-71.github.io/mesto/index.html)**
+**[Проект на GitHub Pages](https://andrey-71.github.io/mesto/)**
 
 ## Описание проекта:
 1. Страница пользователя социальной сети, с примитивным функционалом. В дальнейшем предусмотрено наращивание функционала, преимущественно с использованием технологий JavaScript.
