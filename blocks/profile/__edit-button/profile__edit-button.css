@@ -8,9 +8,9 @@
   background: url(../../../images/profile-icon-edit.svg) center center no-repeat;
   border: 1px solid #fff;
   cursor: pointer;
-  transition: opacity .4s;
+  transition: opacity 0.4s;
 }
 
 .profile__edit-button:hover {
-  opacity: .6;
+  opacity: 0.6;
 }

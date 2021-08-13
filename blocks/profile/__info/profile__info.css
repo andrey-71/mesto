@@ -3,7 +3,7 @@
   grid-template-areas:
     "name edit-button"
     "job job";
-    grid-gap: 16px 18px;
+  grid-gap: 16px 18px;
 }
 
 @media screen and (max-width: 767px) {

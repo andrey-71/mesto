@@ -3,9 +3,9 @@
   height: 19px;
   background: url(../../../images/photo-icon-heart.svg) center center no-repeat;
   cursor: pointer;
-  transition: opacity .4s;
+  transition: opacity 0.4s;
 }
 
 .photo__heart:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
