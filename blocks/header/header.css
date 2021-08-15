@@ -2,7 +2,8 @@
   max-width: 1200px;
   min-width: 320px;
   box-sizing: border-box;
-  padding: 45px 160px 40px;
+  padding: 45px 160px 41px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.6);
 }
 
 @media screen and (max-width: 1023px) {
@@ -21,6 +22,6 @@
 
 @media screen and (max-width: 424px) {
   .header {
-    padding: 28px 0 42px;
+    padding: 28px 0 32px;
   }
 }

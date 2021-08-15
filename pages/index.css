@@ -12,7 +12,6 @@
 /*header bl*/
 @import url(../blocks/header/header.css);
 /*header el*/
-@import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
 /*container bl*/
