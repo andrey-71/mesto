@@ -14,7 +14,7 @@
 /*header el*/
 @import url(../blocks/header/__logo/header__logo.css);
 
-/*container bl*/
+/*content bl*/
 @import url(../blocks/content/content.css);
 
 /*profile bl*/
@@ -40,6 +40,11 @@
 /*photo mod*/
 @import url(../blocks/photo/__heart/_active/photo__heart_active.css);
 
+/*footer bl*/
+@import url(../blocks/footer/footer.css);
+/*footer el*/
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+
 /*popup bl*/
 @import url(../blocks/popup/popup.css);
 /*popup el*/
@@ -51,8 +56,3 @@
 @import url(../blocks/popup/__close/popup__close.css);
 /*popup mod*/
 @import url(../blocks/popup/_active/popup_active.css);
-
-/*footer bl*/
-@import url(../blocks/footer/footer.css);
-/*footer el*/
-@import url(../blocks/footer/__copyright/footer__copyright.css);
