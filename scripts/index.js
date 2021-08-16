@@ -7,8 +7,8 @@ let popupOff = document.querySelector(".popup__close");
 let nameProfile = document.querySelector(".profile__name");
 let jobProfile = document.querySelector(".profile__job");
 // Поля формы
-let nameInput = document.querySelector(".popup__name");
-let jobInput = document.querySelector(".popup__job");
+let nameInput = document.querySelector("#popup__name");
+let jobInput = document.querySelector("#popup__job");
 // Кнопка сохранить
 let saveButton = document.querySelector(".popup__save-button");
 

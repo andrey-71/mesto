@@ -10,7 +10,11 @@
     <div class="page">
       <!--Header-->
       <header class="header page__header">
-        <img class="header__logo" src="./images/header-logo.svg" alt="Логотип Место">
+        <img
+          class="header__logo"
+          src="./images/header-logo.svg"
+          alt="Логотип Место"
+        />
       </header>
 
       <!--Content-->
@@ -100,32 +104,37 @@
             </figcaption>
           </figure>
         </section>
-        <!--Popup-->
-        <div class="popup">
-          <form class="popup__container" name="form">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input
-              type="text"
-              placeholder="Ваше имя"
-              class="popup__name"
-              name="Имя"
-            />
-            <input
-              type="text"
-              placeholder="Чем занимаетесь"
-              class="popup__job"
-              name="Род занятий"
-            />
-            <button class="popup__save-button" type="submit">Сохранить</button>
-            <button class="popup__close"></button>
-          </form>
-        </div>
       </main>
 
       <!--Footer-->
       <footer class="footer page__footer">
         <h2 class="footer__copyright">&copy; 2021 Mesto Russia</h2>
       </footer>
+    </div>
+
+    <!--Popup-->
+    <div class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="form">
+          <input
+            type="text"
+            placeholder="Ваше имя"
+            class="popup__input"
+            id="popup__name"
+            name="Имя"
+          />
+          <input
+            type="text"
+            placeholder="Чем занимаетесь"
+            class="popup__input"
+            id="popup__job"
+            name="Род занятий"
+          />
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__close"></button>
+      </div>
     </div>
 
     <script src="scripts/index.js"></script>
