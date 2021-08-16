@@ -3,14 +3,14 @@ let popup = document.querySelector(".popup");
 // Кнопки открыть/закрыть
 let popupOn = document.querySelector(".profile__edit-button");
 let popupOff = document.querySelector(".popup__close");
+//Форма
+let popupForm = popup.querySelector(".popup__form");
 // Поля с данными в профиле
 let nameProfile = document.querySelector(".profile__name");
 let jobProfile = document.querySelector(".profile__job");
 // Поля формы
-let nameInput = document.querySelector("#popup__name");
-let jobInput = document.querySelector("#popup__job");
-// Кнопка сохранить
-let saveButton = document.querySelector(".popup__save-button");
+let nameInput = popup.querySelector("#popup__name");
+let jobInput = popup.querySelector("#popup__job");
 
 // Открытие с записью/закрытие POPUP
 function togglePopup() {
@@ -34,4 +34,4 @@ function saveProfileData(evt) {
   togglePopup();
 }
 
-saveButton.addEventListener("click", saveProfileData);
+popupForm.addEventListener("submit", saveProfileData);
