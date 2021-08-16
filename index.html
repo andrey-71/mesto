@@ -10,8 +10,11 @@
     <div class="page">
       <!--Header-->
       <header class="header page__header">
-        <div class="header__logo"></div>
-        <div class="header__line"></div>
+        <img
+          class="header__logo"
+          src="./images/header-logo.svg"
+          alt="Логотип Место"
+        />
       </header>
 
       <!--Content-->
@@ -21,112 +24,117 @@
           <div class="profile__user-data">
             <img
               src="./images/profile-avatar.jpg"
-              alt="Аватарка"
+              alt="Фотография пользователя"
               class="profile__avatar"
             />
             <div class="profile__info">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
               <p class="profile__job">Исследователь океана</p>
-              <div class="profile__edit-button"></div>
+              <button class="profile__edit-button"></button>
             </div>
           </div>
-          <div class="profile__add-button"></div>
+          <button class="profile__add-button"></button>
         </section>
         <!--Photo gallery-->
-        <section class="photo-gallery">
-          <div class="photo">
+        <section class="photo-gallery content__photo-gallery">
+          <figure class="photo">
             <img
               src="./images/photo-karachaevsk.jpg"
-              alt="Церковь в горах. Карачаевск"
+              alt="Горная тропинка, ведущая к церкви на склоне горы"
               class="photo__image"
             />
             <div class="photo__info">
               <h2 class="photo__caption">Карачаевск</h2>
-              <div class="photo__heart"></div>
+              <button class="photo__heart"></button>
             </div>
-          </div>
-          <div class="photo">
+          </figure>
+          <figure class="photo">
             <img
               src="./images/photo-elbrus.jpg"
-              alt="Гора Эльбрус"
+              alt="Заснеженные горныйе вершины Эльбруса"
               class="photo__image"
             />
             <div class="photo__info">
               <h2 class="photo__caption">Эльбрус</h2>
-              <div class="photo__heart"></div>
+              <button class="photo__heart"></button>
             </div>
-          </div>
+          </figure>
           <figure class="photo">
             <img
               src="./images/photo-dombai.jpg"
-              alt="Горы Домбая"
+              alt="Горные хребты Домбая, окруженные облаками"
               class="photo__image"
             />
             <figcaption class="photo__info">
               <h2 class="photo__caption">Домбай</h2>
-              <div class="photo__heart"></div>
+              <button class="photo__heart"></button>
             </figcaption>
           </figure>
           <figure class="photo">
             <img
               src="./images/photo-baikal.jpg"
-              alt="Озеро Байкал"
+              alt="Вид на озеро Байкал с вершины горы"
               class="photo__image"
             />
             <figcaption class="photo__info">
               <h2 class="photo__caption">Байкал</h2>
-              <div class="photo__heart"></div>
+              <button class="photo__heart"></button>
             </figcaption>
           </figure>
           <figure class="photo">
             <img
               src="./images/photo-kamchatka.jpg"
-              alt="Вулкан на Камчатке"
+              alt="Кратер вулкана, заполненный водой"
               class="photo__image"
             />
             <figcaption class="photo__info">
               <h2 class="photo__caption">Камчатка</h2>
-              <div class="photo__heart"></div>
+              <button class="photo__heart"></button>
             </figcaption>
           </figure>
           <figure class="photo">
             <img
               src="./images/photo-ural.jpg"
-              alt="Природа Урала"
+              alt="Озеро на фоне скалы и леса"
               class="photo__image"
             />
             <figcaption class="photo__info">
               <h2 class="photo__caption">Урал</h2>
-              <div class="photo__heart"></div>
+              <button class="photo__heart"></button>
             </figcaption>
           </figure>
         </section>
-        <!--Popup-->
-        <div class="popup">
-          <form class="popup__container" name="form">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input
-              type="text"
-              placeholder="Ваше имя"
-              class="popup__name"
-              name="Имя"
-            />
-            <input
-              type="text"
-              placeholder="Чем занимаетесь"
-              class="popup__job"
-              name="Род занятий"
-            />
-            <button class="popup__save-button" type="submit">Сохранить</button>
-            <div class="popup__close"></div>
-          </form>
-        </div>
       </main>
 
       <!--Footer-->
       <footer class="footer page__footer">
         <h2 class="footer__copyright">&copy; 2021 Mesto Russia</h2>
       </footer>
+    </div>
+
+    <!--Popup-->
+    <div class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <form class="popup__form" name="form">
+          <input
+            type="text"
+            placeholder="Ваше имя"
+            class="popup__input"
+            id="popup__name"
+            name="Имя"
+          />
+          <input
+            type="text"
+            placeholder="Чем занимаетесь"
+            class="popup__input"
+            id="popup__job"
+            name="Род занятий"
+          />
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
+        <button class="popup__close"></button>
+      </div>
     </div>
 
     <script src="scripts/index.js"></script>

@@ -1,6 +1,20 @@
 .photo-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(3, 282px);
   grid-gap: 20px 17px;
+  justify-content: center;
+  box-sizing: border-box;
 }
+
+@media screen and (max-width: 1200px) {
+  .photo-gallery {
+    grid-template-columns: repeat(2, 282px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .photo-gallery {
+    grid-template-columns: 282px;
+  }
+}
+

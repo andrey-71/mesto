@@ -4,6 +4,8 @@
   right: -40px;
   width: 32px;
   height: 32px;
+  border: 0;
+  padding: 0;
   background: url(../../../images/popup-icon-close.svg) center center no-repeat;
   cursor: pointer;
   transition: opacity 0.4s;

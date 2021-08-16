@@ -1,8 +1,11 @@
-.popup__job {
+.popup__input {
+  width: 100%;
   padding: 5px 5px 10px; /* добавил отступы сверху и сбоку, так как без них выделенный инпут касется текста */
-  margin-bottom: 48px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
   border: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
   font-family: "Inter", "Arial", "Helvetica", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -13,8 +16,8 @@
   line-height: 1.21;
 }
 
-@media screen and (max-width: 424px) {
-  .popup__job {
-    margin-bottom: 45px;
-  }
+.popup__input:focus {
+  border-bottom: 1px solid #fff;
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
