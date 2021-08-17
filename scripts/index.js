@@ -9,8 +9,8 @@ let popupForm = popup.querySelector(".popup__form");
 let nameProfile = document.querySelector(".profile__name");
 let jobProfile = document.querySelector(".profile__job");
 // Поля формы
-let nameInput = popup.querySelector("#popup__name");
-let jobInput = popup.querySelector("#popup__job");
+let nameInput = popup.querySelector(".popup__input_type_name");
+let jobInput = popup.querySelector(".popup__input_type_job");
 
 // Открытие с записью/закрытие POPUP
 function togglePopup() {
