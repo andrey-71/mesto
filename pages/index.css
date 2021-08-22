@@ -66,3 +66,6 @@
 @import url(../blocks/popup/__input/_type/popup__input_type_card-name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_card-link.css);
 @import url(../blocks/popup/__close/_type/popup__close_type_card.css);
+/*popup-card-view mod*/
+@import url(../blocks/popup/_type/popup_type_card-view.css);
+@import url(../blocks/popup/__card-photo/popup__card-photo.css);

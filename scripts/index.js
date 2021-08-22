@@ -45,7 +45,7 @@ function saveProfileData(evt) {
 
 popupFormEditProfile.addEventListener("submit", saveProfileData);
 
-// Открытие с записью/закрытие add-card
+// Открытие/закрытие add-card
 function togglePopupCard() {
   popupCard.classList.toggle("popup_type_add-card");
 }
