@@ -1,37 +1,37 @@
-// Попап
-let popup = document.querySelector(".popup");
+// Попапы
+let popupProfile = document.querySelector(".popup");
 // Кнопки открыть/закрыть
-let popupOn = document.querySelector(".profile__edit-button");
-let popupOff = document.querySelector(".popup__close");
+let popupProfileOn = document.querySelector(".profile__edit-button");
+let popupProfileOff = document.querySelector(".popup__close_type_profile");
 //Форма
-let popupForm = popup.querySelector(".popup__form");
+let popupFormEditProfile = popupProfile.querySelector(".popup__form_type_profile");
 // Поля с данными в профиле
 let nameProfile = document.querySelector(".profile__name");
 let jobProfile = document.querySelector(".profile__job");
 // Поля формы
-let nameInput = popup.querySelector(".popup__input_type_name");
-let jobInput = popup.querySelector(".popup__input_type_job");
+let nameProfileInput = popupProfile.querySelector(".popup__input_type_profile-name");
+let jobProfileInput = popupProfile.querySelector(".popup__input_type_profile-job");
 
-// Открытие с записью/закрытие POPUP
-function togglePopup() {
-  popup.classList.toggle("popup_active");
+// Открытие с записью/закрытие edit-profile
+function togglePopupProfile() {
+  popupProfile.classList.toggle("popup_type_edit-profile");
 
-  if (popup.classList.contains("popup_active")) {
-    nameInput.value = nameProfile.textContent;
-    jobInput.value = jobProfile.textContent;
+  if (popupProfile.classList.contains("popup_type_edit-profile")) {
+    nameProfileInput.value = nameProfile.textContent;
+    jobProfileInput.value = jobProfile.textContent;
   }
 }
 
-popupOn.addEventListener("click", togglePopup);
-popupOff.addEventListener("click", togglePopup);
+popupProfileOn.addEventListener("click", togglePopupProfile);
+popupProfileOff.addEventListener("click", togglePopupProfile);
 
-// Отправка формы с сохранением результата в профиль
+// Отправка формы из edit-profile с сохранением результата в профиль
 function saveProfileData(evt) {
   evt.preventDefault();
 
-  nameProfile.textContent = nameInput.value;
-  jobProfile.textContent = jobInput.value;
-  togglePopup();
+  nameProfile.textContent = nameProfileInput.value;
+  jobProfile.textContent = jobProfileInput.value;
+  togglePopupProfile();
 }
 
-popupForm.addEventListener("submit", saveProfileData);
+popupFormEditProfile.addEventListener("submit", saveProfileData);
