@@ -173,14 +173,29 @@
     <!--Popup photo view-->
     <div class="popup popup_type_card-view" id="popup-card-view">
       <div class="popup__card-photo">
-        <img src="../../../images/photo-karachaevsk.jpg" alt="#">
-      <button
+        <img src="../../../images/photo-karachaevsk.jpg" alt="#" />
+        <button
           class="popup__close popup__close_type_card-view"
           type="button"
         ></button>
       </div>
-
     </div>
+
+    <!--Template photos-->
+    <template id="card-template">
+      <figure class="photo">
+        <img
+          src=""
+          alt=""
+          class="photo__image"
+        />
+        <figcaption class="photo__info">
+          <h2 class="photo__caption"></h2>
+          <button class="photo__heart" type="button"></button>
+        </figcaption>
+      </figure>
+    </template>
+
     <script src="scripts/index.js"></script>
   </body>
 </html>
