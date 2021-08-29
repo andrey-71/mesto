@@ -9,7 +9,7 @@ const popupProfileOff = popupProfile.querySelector(
 const popupAddCardOn = document.querySelector(".profile__add-button");
 const popupAddCardOff = popupAddCard.querySelector(".popup__close_type_card");
 //Открытие/закрытие popup'ов
-const togglePopup = (popup) => popup.classList.toggle("popup_active");
+const togglePopup = popup => popup.classList.toggle("popup_active");
 // Обработчики событий на popup'ах
 popupProfileOn.addEventListener("click", () => {
   togglePopup(popupProfile);
@@ -38,7 +38,7 @@ const jobProfileInput = popupProfile.querySelector(
 );
 
 // Отправка формы из edit-profile с сохранением результата в профиль
-function saveProfileData(evt) {
+const saveProfileData = evt => {
   evt.preventDefault();
 
   nameProfile.textContent = nameProfileInput.value;
@@ -49,16 +49,66 @@ function saveProfileData(evt) {
 popupFormEditProfile.addEventListener("submit", saveProfileData);
 
 
+// Template card
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+const cardTemplate = document.querySelector('#card-template').content;
+const cardsElement = document.querySelector('.photo-gallery');
+//Добавление карточек из массива
+const addCard = (data) => {
+  const cardElement = cardTemplate.querySelector('.photo').cloneNode(true);
+  cardElement.querySelector('.photo__image').src = data.link;
+  cardElement.querySelector('.photo__caption').textContent = data.name;
+  cardElement.querySelector('.photo__image').alt = data.name;
+
+  cardsElement.append(cardElement);
+};
+
+initialCards.forEach((card) => {
+  addCard(card);
+});
+//Добавление карточек из формы
+
+
+
+
+
+
+
 
 // Кнопка лайка
 const like = document.querySelector(".photo__heart");
 
 // Лайк фотографии - ПЕРЕДЕЛАТЬ ВКЛ/ВЫКЛ НА РАЗНЫЕ ФУНКЦИИ
-function togglePhotoLike() {
-  like.classList.toggle("photo__heart_active");
-}
+// function togglePhotoLike() {
+//   like.classList.toggle("photo__heart_active");
+// }
 
-like.addEventListener("click", togglePhotoLike);
+// like.addEventListener("click", togglePhotoLike);
 
 
 
