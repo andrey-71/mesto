@@ -8,8 +8,14 @@ const popupProfileOff = popupProfile.querySelector(
 );
 const popupAddCardOn = document.querySelector(".profile__add-button");
 const popupAddCardOff = popupAddCard.querySelector(".popup__close_type_card");
+//Формы
+const popupFormEditProfile = popupProfile.querySelector(
+  ".popup__form_type_profile"
+);
+const popupFormAddCards = popupAddCard.querySelector('.popup__form_type_card');
+
 //Открытие/закрытие popup'ов
-const togglePopup = popup => popup.classList.toggle("popup_active");
+const togglePopup = (popup) => popup.classList.toggle("popup_active");
 // Обработчики событий на popup'ах
 popupProfileOn.addEventListener("click", () => {
   togglePopup(popupProfile);
@@ -22,10 +28,6 @@ popupProfileOff.addEventListener("click", () => togglePopup(popupProfile));
 popupAddCardOn.addEventListener("click", () => togglePopup(popupAddCard));
 popupAddCardOff.addEventListener("click", () => togglePopup(popupAddCard));
 
-//Формы
-const popupFormEditProfile = popupProfile.querySelector(
-  ".popup__form_type_profile"
-);
 // Поля с данными в профиле
 const nameProfile = document.querySelector(".profile__name");
 const jobProfile = document.querySelector(".profile__job");
@@ -38,7 +40,7 @@ const jobProfileInput = popupProfile.querySelector(
 );
 
 // Отправка формы из edit-profile с сохранением результата в профиль
-const saveProfileData = evt => {
+const saveProfileData = (evt) => {
   evt.preventDefault();
 
   nameProfile.textContent = nameProfileInput.value;
@@ -85,13 +87,30 @@ const addCard = (data) => {
   cardElement.querySelector('.photo__caption').textContent = data.name;
   cardElement.querySelector('.photo__image').alt = data.name;
 
-  cardsElement.append(cardElement);
+  cardsElement.prepend(cardElement);
 };
 
 initialCards.forEach((card) => {
   addCard(card);
 });
+
 //Добавление карточек из формы
+const addCardFromForm = (evt) => {
+  const addCardFormName = popupAddCard.querySelector('.popup__input_type_card-name').value;
+  const addCardFormLink = popupAddCard.querySelector('.popup__input_type_card-link').value;
+  console.log(addCardFormName);
+  console.log(addCardFormLink);
+  evt.preventDefault();
+
+  addCard({
+    name: addCardFormName,
+    link: addCardFormLink
+  });
+
+  popupFormAddCards.reset();
+  togglePopup(popupAddCard);
+}
+popupFormAddCards.addEventListener("submit", addCardFromForm);
 
 
 
