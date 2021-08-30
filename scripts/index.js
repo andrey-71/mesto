@@ -13,7 +13,6 @@ const popupViewCardOn = document.querySelector(".card__image");
 const popupViewCardOff = popupViewCard.querySelector(
   ".popup__close_type_card-view"
 );
-console.log (popupViewCardOn);
 //Формы
 const popupFormEditProfile = popupProfile.querySelector(
   ".popup__form_type_profile"
@@ -34,7 +33,7 @@ popupProfileOff.addEventListener("click", () => togglePopup(popupProfile));
 popupAddCardOn.addEventListener("click", () => togglePopup(popupAddCard));
 popupAddCardOff.addEventListener("click", () => togglePopup(popupAddCard));
 // popupViewCardOn.addEventListener("click", () => togglePopup(popupViewCard));
-
+popupViewCardOff.addEventListener("click", () => togglePopup(popupViewCard));
 // Поля с данными в профиле
 const nameProfile = document.querySelector(".profile__name");
 const jobProfile = document.querySelector(".profile__job");
@@ -92,10 +91,22 @@ const addCard = (data) => {
   cardElement.querySelector(".card__image").src = data.link;
   cardElement.querySelector(".card__caption").textContent = data.name;
   cardElement.querySelector(".card__image").alt = data.name;
+  //Открытие карточки
+  cardElement.querySelector('.card__image').addEventListener("click", (evt) => {
+    togglePopup(popupViewCard);
+  });
+  //Удаление карточки
+  cardElement.querySelector('.card__delete').addEventListener("click", (evt) => {
+    evt.target.closest('.card').remove();
+  });
+  //Лайк
+  cardElement.querySelector('.card__heart').addEventListener("click", (evt) => {
+    evt.target.closest('.card__heart').classList.toggle('card__heart_active');
+  });
+
 
   cardsElement.prepend(cardElement);
 };
-
 initialCards.forEach((card) => {
   addCard(card);
 });
@@ -107,8 +118,6 @@ const addCardFromForm = (evt) => {
   const addCardFormLink = popupAddCard.querySelector(
     ".popup__input_type_card-link"
   ).value;
-  console.log(addCardFormName);
-  console.log(addCardFormLink);
   evt.preventDefault();
 
   addCard({
@@ -124,18 +133,4 @@ popupFormAddCards.addEventListener("submit", addCardFromForm);
 // Просмотр фотографий
 
 
-// Удаление карточки
-const removeCard = (evt) => {
-  evt.target.closest('.card').remove();
-}
 
-
-// Кнопка лайка
-const like = document.querySelector(".card__heart");
-
-// Лайк фотографии - ПЕРЕДЕЛАТЬ ВКЛ/ВЫКЛ НА РАЗНЫЕ ФУНКЦИИ
-// function togglePhotoLike() {
-//   like.classList.toggle("photo__heart_active");
-// }
-
-// like.addEventListener("click", togglePhotoLike);
