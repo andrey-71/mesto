@@ -32,7 +32,6 @@ popupProfileOn.addEventListener("click", () => {
 popupProfileOff.addEventListener("click", () => togglePopup(popupProfile));
 popupAddCardOn.addEventListener("click", () => togglePopup(popupAddCard));
 popupAddCardOff.addEventListener("click", () => togglePopup(popupAddCard));
-// popupViewCardOn.addEventListener("click", () => togglePopup(popupViewCard));
 popupViewCardOff.addEventListener("click", () => togglePopup(popupViewCard));
 // Поля с данными в профиле
 const nameProfile = document.querySelector(".profile__name");
@@ -94,6 +93,10 @@ const addCard = (data) => {
   //Открытие карточки
   cardElement.querySelector('.card__image').addEventListener("click", (evt) => {
     togglePopup(popupViewCard);
+    document.querySelector('.popup__card-view-photo').src = data.link;
+    document.querySelector('.popup__card-view-caption').textContent = data.name;
+    document.querySelector('.popup__card-view-photo').alt = data.name;
+    jobProfile.textContent = jobProfileInput.value;
   });
   //Удаление карточки
   cardElement.querySelector('.card__delete').addEventListener("click", (evt) => {
