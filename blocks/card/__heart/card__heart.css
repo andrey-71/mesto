@@ -1,13 +1,13 @@
-.photo__heart {
+.card__heart {
   width: 22px;
   height: 19px;
   border: 0;
   padding: 0;
-  background: url(../../../images/photo-icon-heart.svg) center center no-repeat;
+  background: url(../../../images/card-icon-heart.svg) center center no-repeat;
   cursor: pointer;
   transition: opacity 0.4s;
 }
 
-.photo__heart:hover {
+.card__heart:hover {
   opacity: 0.5;
 }

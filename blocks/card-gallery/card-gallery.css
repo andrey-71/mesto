@@ -1,4 +1,4 @@
-.photo-gallery {
+.card-gallery {
   display: grid;
   grid-template-columns: repeat(3, 282px);
   grid-gap: 20px 17px;
@@ -7,13 +7,13 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .photo-gallery {
+  .card-gallery {
     grid-template-columns: repeat(2, 282px);
   }
 }
 
 @media screen and (max-width: 640px) {
-  .photo-gallery {
+  .card-gallery {
     grid-template-columns: 282px;
   }
 }

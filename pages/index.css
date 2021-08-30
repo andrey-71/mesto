@@ -28,17 +28,18 @@
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 
-/*photo-gallery bl*/
-@import url(../blocks/photo-gallery/photo-gallery.css);
-/*photo bl*/
-@import url(../blocks/photo/photo.css);
-/*photo el*/
-@import url(../blocks/photo/__image/photo__image.css);
-@import url(../blocks/photo/__info/photo__info.css);
-@import url(../blocks/photo/__caption/photo__caption.css);
-@import url(../blocks/photo/__heart/photo__heart.css);
-/*photo mod*/
-@import url(../blocks/photo/__heart/_active/photo__heart_active.css);
+/*card-gallery bl*/
+@import url(../blocks/card-gallery/card-gallery.css);
+/*card bl*/
+@import url(../blocks/card/card.css);
+/*card el*/
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__info/card__info.css);
+@import url(../blocks/card/__caption/card__caption.css);
+@import url(../blocks/card/__delete/card__delete.css);
+@import url(../blocks/card/__heart/card__heart.css);
+/*card mod*/
+@import url(../blocks/card/__heart/_active/card__heart_active.css);
 
 /*footer bl*/
 @import url(../blocks/footer/footer.css);
@@ -54,20 +55,23 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__card-view-container/popup__card-view-container.css);
+@import url(../blocks/popup/__card-view-photo/popup__card-view-photo.css);
+@import url(../blocks/popup/__card-view-caption/popup__card-view-caption.css);
 /*popup mod*/
 @import url(../blocks/popup/popup_active.css);
-/*popup-profile mod*/
-@import url(../blocks/popup/_type/popup_type_edit-profile.css);/*удалить, использовать popup_active*/
+/*popup-edit-profile mod*/
+@import url(../blocks/popup/_type/popup_type_edit-profile.css);
 @import url(../blocks/popup/__form/_type/popup__form_type_profile.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profile-name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profile-job.css);
 @import url(../blocks/popup/__close/_type/popup__close_type_profile.css);
-/*popup-card mod*/
-@import url(../blocks/popup/_type/popup_type_add-card.css);/*удалить, использовать popup_active*/
+/*popup-add-card mod*/
+@import url(../blocks/popup/_type/popup_type_add-card.css);
 @import url(../blocks/popup/__form/_type/popup__form_type_card.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_card-name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_card-link.css);
 @import url(../blocks/popup/__close/_type/popup__close_type_card.css);
 /*popup-card-view mod*/
-@import url(../blocks/popup/_type/popup_type_card-view.css);/*удалить, использовать popup_active*/
-@import url(../blocks/popup/__card-photo/popup__card-photo.css);
+@import url(../blocks/popup/_type/popup_type_card-view.css);
+
