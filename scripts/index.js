@@ -18,31 +18,30 @@ const jobProfile = document.querySelector(".profile__job");
 const nameProfileInput = popupProfile.querySelector(".popup__input_type_profile-name");
 const jobProfileInput = popupProfile.querySelector(".popup__input_type_profile-job");
 
-// Открытие/закрытие popup'ов
-const togglePopup = (popup) => popup.classList.toggle("popup_active");
+// Функция открытия/закрытия popup'ов
+const openPopup = (popup) => popup.classList.add("popup_active");
+const closePopup = (popup) => popup.classList.remove("popup_active");
 
 // Слушатель клика для открытия/закрытия popup'ов:
 // - редактирования рофиля
 popupProfileOn.addEventListener("click", () => {
-  togglePopup(popupProfile);
-  if (popupProfile.classList.contains("popup_active")) {
-    nameProfileInput.value = nameProfile.textContent;
-    jobProfileInput.value = jobProfile.textContent;
-  }
+  openPopup(popupProfile);
+  nameProfileInput.value = nameProfile.textContent;
+  jobProfileInput.value = jobProfile.textContent;
 });
-popupProfileOff.addEventListener("click", () => togglePopup(popupProfile));
+popupProfileOff.addEventListener("click", () => closePopup(popupProfile));
 // - добавления карточек
-popupAddCardOn.addEventListener("click", () => togglePopup(popupAddCard));
-popupAddCardOff.addEventListener("click", () => togglePopup(popupAddCard));
-// - просмотра фотографии карточки (только закрытие popup'а, открытие - внутри addCard)
-popupViewCardOff.addEventListener("click", () => togglePopup(popupViewCard));
+popupAddCardOn.addEventListener("click", () => openPopup(popupAddCard));
+popupAddCardOff.addEventListener("click", () => closePopup(popupAddCard));
+// - просмотра фотографии карточки (только закрытие popup'а, слушатель открытия - внутри createCard)
+popupViewCardOff.addEventListener("click", () => closePopup(popupViewCard));
 
-// Отправка формы из edit-profile с сохранением результата в профиль
+// Функция отправки формы из edit-profile с сохранением результата в профиль
 const saveProfileData = (evt) => {
   evt.preventDefault();
   nameProfile.textContent = nameProfileInput.value;
   jobProfile.textContent = jobProfileInput.value;
-  togglePopup(popupProfile);
+  closePopup(popupProfile);
 };
 // Обработчик события для формы редактирования профиля
 popupFormEditProfile.addEventListener("submit", saveProfileData);
@@ -52,7 +51,7 @@ const cardTemplate = document.querySelector("#card-template").content;
 // Контейнер с карточками
 const cardsElement = document.querySelector(".card-gallery");
 
-//Добавление карточек из массива на страницу
+//Функция добавления карточек из массива на страницу
 const addCard = (data) => {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
   cardElement.querySelector(".card__image").src = data.link;
@@ -70,7 +69,7 @@ const addCard = (data) => {
 
 // Функция открытия фотографии карточки
 const OpenPopupViewCard = (data) => {
-  togglePopup(popupViewCard);
+  openPopup(popupViewCard);
   popupViewCard.querySelector(".popup__card-view-photo").src = data.link;
   popupViewCard.querySelector(".popup__card-view-caption").textContent = data.name;
   popupViewCard.querySelector(".popup__card-view-photo").alt = data.name;
@@ -84,7 +83,7 @@ const addLikeCard = (evt) => {
   evt.target.closest(".card__heart").classList.toggle("card__heart_active");
 };
 
-//Добавление карточек из формы на страницу
+//Функция добавления карточек из формы на страницу
 const addCardFromForm = (evt) => {
   evt.preventDefault();
   const addCardFormName = popupAddCard.querySelector(".popup__input_type_card-name").value;
@@ -95,7 +94,7 @@ const addCardFromForm = (evt) => {
   });
 
   popupFormAddCards.reset();
-  togglePopup(popupAddCard);
+  openPopup(popupAddCard);
 };
 // Обработчик события для формы добавления карточек
 popupFormAddCards.addEventListener("submit", addCardFromForm);
