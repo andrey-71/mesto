@@ -111,12 +111,20 @@ initialCards.forEach((card) => {
 });
 
 
-// Закрытие popup'ов при нажатии на Esc
+// Массив всех popup'ов
 const popupList = Array.from(document.querySelectorAll('.popup'));
-console.log(popupList);// del
+
+// Перебор всех popup'ов
 popupList.forEach((popup) => {
+  // Закрытие popup'ов при нажатии на Esc
   document.addEventListener('keydown', (evt) => {
     if(evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+  // Закрытие popup'ов при клике на overlay
+  popup.addEventListener('click', (evt) => {
+    if(popup === evt.target) {
       closePopup(popup);
     }
   });
