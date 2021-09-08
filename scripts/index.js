@@ -109,3 +109,15 @@ popupFormAddCards.addEventListener("submit", addCardFromForm);
 initialCards.forEach((card) => {
   addCard(card);
 });
+
+
+// Закрытие popup'ов при нажатии на Esc
+const popupList = Array.from(document.querySelectorAll('.popup'));
+console.log(popupList);// del
+popupList.forEach((popup) => {
+  document.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  });
+});
