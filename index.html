@@ -52,7 +52,6 @@
         <form
           class="popup__form popup__form_type_profile"
           name="Редактирование данных профиля"
-          novalidate
         >
           <label class="popup__input-element">
             <input
@@ -63,9 +62,11 @@
                 popup__input_type_profile-name
               "
               name="Имя"
+              required
+              minlength="2"
+              maxlength="40"
             />
-            <span class="popup__input-error"
-              >Вы пропустили это поле.</span
+            <span class="popup__input-error">1</span
             >
           </label>
           <label class="popup__input-element">
@@ -74,10 +75,11 @@
               placeholder="Чем занимаетесь"
               class="popup__input popup__input_type_profile-job"
               name="Род занятий"
+              required
+              minlength="2"
+              maxlength="200"
             />
-            <span class="popup__input-error"
-              >Вы пропустили это поле.</span
-            >
+            <span class="popup__input-error">2</span>
           </label>
           <button
             class="popup__save-button"
@@ -108,9 +110,11 @@
               placeholder="Название"
               class="popup__input popup__input_type_card-name"
               name="Название картинки"
+              required
+              minlength="2"
+              maxlength="30"
             />
-            <span class="popup__input-error"
-              >Вы пропустили это поле.</span
+            <span class="popup__input-error">3</span
             >
           </label>
           <label class="popup__input-element">
@@ -119,9 +123,9 @@
               placeholder="Ссылка на картинку"
               class="popup__input popup__input_type_card-link"
               name="Ссылка на картинку"
+              required
             />
-            <span class="popup__input-error"
-              >Введите адрес сайта.</span
+            <span class="popup__input-error">4</span
             >
           </label>
           <button class="popup__save-button" type="submit">Создать</button>

@@ -2,6 +2,8 @@
 const popupProfile = document.querySelector(".popup_type_edit-profile");
 const popupAddCard = document.querySelector(".popup_type_add-card");
 const popupViewCard = document.querySelector(".popup_type_card-view");
+// Массив всех popup'ов
+const popupList = Array.from(document.querySelectorAll('.popup'));
 // Кнопки открыть/закрыть
 const popupProfileOn = document.querySelector(".profile__edit-button");
 const popupProfileOff = popupProfile.querySelector(".popup__close_type_profile");
@@ -21,6 +23,16 @@ const jobProfileInput = popupProfile.querySelector(".popup__input_type_profile-j
 const cardTemplate = document.querySelector("#card-template").content;
 // HTML-контейнер с карточками
 const cardsElement = document.querySelector(".card-gallery");
+//Данные для валидации
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save-button",
+  inactiveButtonClass: "popup__save-button_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__input-error_visible",
+};
+
 
 // Функция открытия/закрытия popup'ов
 const openPopup = (popup) => popup.classList.add("popup_active");
@@ -80,7 +92,6 @@ const addCardFromForm = (evt) => {
     name: addCardFormName,
     link: addCardFormLink,
   });
-
   popupFormAddCards.reset();
   closePopup(popupAddCard);
 };
@@ -100,19 +111,22 @@ popupAddCardOff.addEventListener("click", () => closePopup(popupAddCard));
 popupViewCardOff.addEventListener("click", () => closePopup(popupViewCard));
 
 // Обработчик события для формы редактирования профиля
-popupFormEditProfile.addEventListener("submit", saveProfileData);
+popupFormEditProfile.addEventListener("submit", (evt) => {
+  saveProfileData(evt);
+});
 
 // Обработчик события для формы добавления карточек
-popupFormAddCards.addEventListener("submit", addCardFromForm);
+popupFormAddCards.addEventListener("submit", (evt) => {
+  addCardFromForm(evt);
+  enableValidation(validationConfig);
+});
 
 // Добавление карточек на страницу
 initialCards.forEach((card) => {
   addCard(card);
 });
 
-
-// Массив всех popup'ов
-const popupList = Array.from(document.querySelectorAll('.popup'));
+enableValidation(validationConfig);
 
 // Перебор всех popup'ов
 popupList.forEach((popup) => {
