@@ -57,36 +57,35 @@
             <input
               type="text"
               placeholder="Ваше имя"
-              class="
-                popup__input
-                popup__input_type_profile-name
-              "
+              class="popup__input popup__input_type_profile-name"
+              id="input-profile-name"
               name="Имя"
               required
               minlength="2"
               maxlength="40"
             />
-            <span class="popup__input-error">1</span
-            >
+            <span
+              class="popup__input-error"
+              id="input-profile-name-error"
+            ></span>
           </label>
           <label class="popup__input-element">
             <input
               type="text"
               placeholder="Чем занимаетесь"
               class="popup__input popup__input_type_profile-job"
+              id="input-profile-job"
               name="Род занятий"
               required
               minlength="2"
               maxlength="200"
             />
-            <span class="popup__input-error">2</span>
+            <span
+              class="popup__input-error"
+              id="input-profile-job-error"
+            ></span>
           </label>
-          <button
-            class="popup__save-button"
-            type="submit"
-          >
-            Сохранить
-          </button>
+          <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
         <button
           class="popup__close popup__close_type_profile"
@@ -109,24 +108,24 @@
               type="text"
               placeholder="Название"
               class="popup__input popup__input_type_card-name"
+              id="input-card-name"
               name="Название картинки"
               required
               minlength="2"
               maxlength="30"
             />
-            <span class="popup__input-error">3</span
-            >
+            <span class="popup__input-error" id="input-card-name-error"></span>
           </label>
           <label class="popup__input-element">
             <input
               type="url"
               placeholder="Ссылка на картинку"
               class="popup__input popup__input_type_card-link"
+              id="input-card-link"
               name="Ссылка на картинку"
               required
             />
-            <span class="popup__input-error">4</span
-            >
+            <span class="popup__input-error" id="input-card-link-error"></span>
           </label>
           <button class="popup__save-button" type="submit">Создать</button>
         </form>
