@@ -120,13 +120,11 @@ popupProfileOn.addEventListener("click", () => {
   nameProfileInput.value = nameProfile.textContent;
   jobProfileInput.value = jobProfile.textContent;
   openPopup(popupProfile);
-  enableValidation(validationConfig);
 });
 popupProfileOff.addEventListener("click", () => closePopup(popupProfile));
 // - добавления карточек
 popupAddCardOn.addEventListener("click", () => {
   openPopup(popupAddCard);
-  enableValidation(validationConfig);
 });
 popupAddCardOff.addEventListener("click", () => closePopup(popupAddCard));
 // - просмотра фотографии карточки (только закрытие popup'а, слушатель открытия - внутри createCard)
@@ -159,7 +157,7 @@ popupList.forEach((popup) => {
     }
   });
   // Закрытие popup'ов при клике на overlay
-  popup.addEventListener("click", (evt) => {
+  popup.addEventListener("mousedown", (evt) => {
     if (popup === evt.target) {
       closePopup(popup);
     }

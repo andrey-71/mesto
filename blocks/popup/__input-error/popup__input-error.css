@@ -13,4 +13,5 @@
   line-height: 1.25;
   color: #ff0000;
   opacity: 0;
+  z-index: 1;
 }

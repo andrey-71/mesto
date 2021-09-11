@@ -6,6 +6,7 @@ const showInputError = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.add('popup__input_type_error');
   errorElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
   errorElement.textContent = inputElement.validationMessage;
@@ -19,9 +20,10 @@ const hideInputError = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
+  inputElement.classList.remove('popup__input_type_error');
   errorElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
-  errorElement.textContent = inputElement.validationMessage;
+  errorElement.textContent = '';
 };
 
 // Функция для включения/выключения показа текста ошибки валидации
@@ -83,7 +85,6 @@ const setEventListeners = (
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   toggleButtonState(formElement, inputList, buttonElement, inactiveButtonClass);
   inputList.forEach((inputElement) => {
-    checkInputValidity(formElement, inputElement, inputErrorClass, errorClass);
     inputElement.addEventListener("input", () => {
       checkInputValidity(
         formElement,
@@ -115,13 +116,3 @@ const enableValidation = (config) => {
     );
   });
 };
-
-// Запуск валидации
-// enableValidation({
-//   formSelector: ".popup__form",
-//   inputSelector: ".popup__input",
-//   submitButtonSelector: ".popup__save-button",
-//   inactiveButtonClass: "popup__save-button_disabled",
-//   inputErrorClass: "popup__input_type_error",
-//   errorClass: "popup__input-error_visible",
-// });
