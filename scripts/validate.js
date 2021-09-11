@@ -1,4 +1,4 @@
-// Функция, показывающая текст ошибки валидации
+// Функция показывающая текст ошибки валидации
 const showInputError = (
   formElement,
   inputElement,
@@ -6,13 +6,13 @@ const showInputError = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
+  inputElement.classList.add("popup__input_type_error");
   errorElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
   errorElement.textContent = inputElement.validationMessage;
 };
 
-// Функция, скрывающая текст ошибки валидации
+// Функция скрывающая текст ошибки валидации
 const hideInputError = (
   formElement,
   inputElement,
@@ -20,10 +20,10 @@ const hideInputError = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
+  inputElement.classList.remove("popup__input_type_error");
   errorElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
-  errorElement.textContent = '';
+  errorElement.textContent = "";
 };
 
 // Функция для включения/выключения показа текста ошибки валидации
@@ -80,7 +80,7 @@ const setEventListeners = (
   buttonElement,
   inactiveButtonClass,
   inputErrorClass,
-  errorClass /* ... */
+  errorClass
 ) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
   toggleButtonState(formElement, inputList, buttonElement, inactiveButtonClass);
