@@ -6,8 +6,7 @@ const showInputError = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_type_error");
-  errorElement.classList.add(inputErrorClass);
+  inputElement.classList.add(inputErrorClass);
   errorElement.classList.add(errorClass);
   errorElement.textContent = inputElement.validationMessage;
 };
@@ -20,8 +19,7 @@ const hideInputError = (
   errorClass
 ) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-  inputElement.classList.remove("popup__input_type_error");
-  errorElement.classList.remove(inputErrorClass);
+  inputElement.classList.remove(inputErrorClass);
   errorElement.classList.remove(errorClass);
   errorElement.textContent = "";
 };
