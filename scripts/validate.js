@@ -81,7 +81,7 @@ const setEventListeners = (
   errorClass
 ) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  toggleButtonState(formElement, inputList, buttonElement, inactiveButtonClass);
+  // toggleButtonState(formElement, inputList, buttonElement, inactiveButtonClass);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(
@@ -100,7 +100,7 @@ const setEventListeners = (
   });
 };
 
-// Функция проверки всех форм на валидацию
+// Функция валидации всех форм
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
