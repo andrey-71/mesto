@@ -38,12 +38,12 @@ const checkInputValidity = (
   }
 };
 
-// Неактивная кнопка
+// Функция неактивной кнопки
 const disableSubmitButton = (button, inactiveButtonClass) => {
   button.classList.add(inactiveButtonClass);
   button.disabled = true;
 };
-// Активная кнопка
+// Функция активной кнопки
 const enableSubmitButton = (button, inactiveButtonClass) => {
   button.classList.remove(inactiveButtonClass);
   button.disabled = false;
@@ -81,7 +81,7 @@ const setEventListeners = (
   errorClass
 ) => {
   const inputList = Array.from(formElement.querySelectorAll(inputSelector));
-  // toggleButtonState(formElement, inputList, buttonElement, inactiveButtonClass);
+  toggleButtonState(formElement, inputList, buttonElement, inactiveButtonClass);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(
@@ -111,6 +111,30 @@ const enableValidation = (config) => {
       config.inactiveButtonClass,
       config.inputErrorClass,
       config.errorClass
+    );
+  });
+};
+
+// Сброс ошибок валидации при открытии попапов и изменение соостояния кнопки
+const resetValidationErrorAndToggleButtonState = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const inputList = Array.from(
+      formElement.querySelectorAll(config.inputSelector)
+    );
+    inputList.forEach((inputElement) => {
+      hideInputError(
+        formElement,
+        inputElement,
+        config.inputErrorClass,
+        config.errorClass
+      );
+    });
+    toggleButtonState(
+      formElement,
+      inputList,
+      config.submitButtonSelector,
+      config.inactiveButtonClass
     );
   });
 };
