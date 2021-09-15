@@ -116,25 +116,22 @@ const enableValidation = (config) => {
 };
 
 // Сброс ошибок валидации при открытии попапов и изменение соостояния кнопки
-const resetValidationErrorAndToggleButtonState = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
-  formList.forEach((formElement) => {
-    const inputList = Array.from(
-      formElement.querySelectorAll(config.inputSelector)
-    );
-    inputList.forEach((inputElement) => {
-      hideInputError(
-        formElement,
-        inputElement,
-        config.inputErrorClass,
-        config.errorClass
-      );
-    });
-    toggleButtonState(
+const resetValidation = (formElement, config) => {
+  const inputList = Array.from(
+    formElement.querySelectorAll(config.inputSelector)
+  );
+  inputList.forEach((inputElement) => {
+    hideInputError(
       formElement,
-      inputList,
-      config.submitButtonSelector,
-      config.inactiveButtonClass
+      inputElement,
+      config.inputErrorClass,
+      config.errorClass
     );
   });
+  toggleButtonState(
+    formElement,
+    inputList,
+    config.submitButtonSelector,
+    config.inactiveButtonClass
+  );
 };

@@ -125,7 +125,7 @@ const addCardFromForm = (evt) => {
     link: addCardFormLink,
   });
   popupFormAddCards.reset();
-  resetValidationErrorAndToggleButtonState(validationConfig);
+  resetValidation(popupFormAddCards, validationConfig);
   closePopup(popupAddCard);
 };
 
@@ -135,7 +135,7 @@ popupProfileOn.addEventListener("click", () => {
   nameProfileInput.value = nameProfile.textContent;
   jobProfileInput.value = jobProfile.textContent;
   openPopup(popupProfile);
-  resetValidationErrorAndToggleButtonState(validationConfig);
+resetValidation(popupFormEditProfile, validationConfig);
 });
 popupProfileOff.addEventListener("click", () => closePopup(popupProfile));
 // - добавления карточек
