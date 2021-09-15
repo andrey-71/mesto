@@ -52,9 +52,9 @@ const closeEscPopup = (evt) => {
 };
 
 // Функция закрытия popup'а для слушателя клика на overlay
-const closeOverlayPopup = (event, popupElement) => {
-  if (popupElement === event.target) {
-    closePopup(popupElement);
+const closeOverlayPopup = (event) => {
+  if (event.currentTarget === event.target) {
+    closePopup(event.currentTarget);
   }
 };
 
@@ -147,7 +147,7 @@ popupViewCardOff.addEventListener("click", () => closePopup(popupViewCard));
 // Установка слушателей клика на overlay
 popupList.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
-    closeOverlayPopup(evt, popup);
+    closeOverlayPopup(evt);
   });
 });
 
