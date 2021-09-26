@@ -1,3 +1,6 @@
+import {Card} from './Card.js';
+import {initialCards} from './initial-cards.js';
+
 // Попапы
 const popupProfile = document.querySelector(".popup_type_edit-profile");
 const popupAddCard = document.querySelector(".popup_type_add-card");
@@ -33,7 +36,6 @@ const validationConfig = {
   errorClass: "popup__input-error_visible",
 };
 
-
 // Функция открытия/закрытия popup'ов
 const openPopup = (popup) => {
   document.addEventListener("keydown", closeEscPopup);
@@ -67,49 +69,19 @@ const saveProfileData = (evt) => {
   closePopup(popupProfile);
 };
 
-//Функция создания карточки
-const createCard = (data) => {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  cardElement.querySelector(".card__image").src = data.link;
-  cardElement.querySelector(".card__caption").textContent = data.name;
-  cardElement.querySelector(".card__image").alt = data.name;
-  //Обработчики событий
-  cardElement.querySelector(".card__image").addEventListener("click", () => {
-    openPopupViewCard(data);
-  });
-  cardElement
-    .querySelector(".card__delete")
-    .addEventListener("click", removeCard);
-  cardElement
-    .querySelector(".card__heart")
-    .addEventListener("click", toggleLikeCard);
-
-  return cardElement;
-};
-
 //Функция добавления карточек из массива на страницу
-const addCard = (card) => {
-  cardsElement.prepend(createCard(card));
+const addCard = (cardSelector, dataCard) => {
+  const card = new Card(cardSelector, dataCard);
+  cardsElement.prepend(card.createCard);
 };
 
 // Функция открытия фотографии карточки
-const openPopupViewCard = (data) => {
-  popupViewCard.querySelector(".popup__card-view-photo").src = data.link;
-  popupViewCard.querySelector(".popup__card-view-caption").textContent =
-    data.name;
-  popupViewCard.querySelector(".popup__card-view-photo").alt = data.name;
-  openPopup(popupViewCard);
-};
-
-// Функция удаления карточки
-const removeCard = (evt) => {
-  evt.target.closest(".card").remove();
-};
-
-// Функция для лайка
-const toggleLikeCard = (evt) => {
-  evt.target.classList.toggle("card__heart_active");
-};
+const openPopupViewCard = () => {
+  const cardImage = document.querySelector('.card__image');
+  cardImage.addEventListener("click", () => {
+    openPopup(popupViewCard);
+  });
+}
 
 //Функция добавления карточек из формы на страницу
 const addCardFromForm = (evt) => {
@@ -162,8 +134,9 @@ popupFormAddCards.addEventListener("submit", (evt) => {
 });
 
 // Добавление карточек на страницу
-initialCards.forEach((card) => {
-  addCard(card);
+initialCards.forEach((initialCard) => {
+  addCard(cardTemplate, initialCard);
+  openPopupViewCard();
 });
 
 
