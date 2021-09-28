@@ -1,5 +1,4 @@
 import {Card} from './Card.js';
-import {initialCards} from './initial-cards.js';
 import {FormValidator} from './FormValidator.js';
 
 // Попапы
@@ -29,13 +28,13 @@ const cardTemplate = document.querySelector("#card-template").content;
 const cardsElement = document.querySelector(".card-gallery");
 //Данные для валидации
 const validationConfig = {
-  formSelector: ".popup__form",
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_visible",
 };
+
 
 // Функция открытия/закрытия popup'ов
 const openPopup = (popup) => {
@@ -60,7 +59,6 @@ const closeOverlayPopup = (event) => {
     closePopup(event.currentTarget);
   }
 };
-
 
 // Функция отправки формы из edit-profile с сохранением результата в профиль
 const saveProfileData = (evt) => {
@@ -93,7 +91,7 @@ const addCardFromForm = (evt) => {
   const addCardFormLink = popupAddCard.querySelector(
     ".popup__input_type_card-link"
   ).value;
-  addCard({
+  addCard(cardTemplate, {
     name: addCardFormName,
     link: addCardFormLink,
   });
