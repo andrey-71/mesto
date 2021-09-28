@@ -1,5 +1,6 @@
 import {Card} from './Card.js';
 import {initialCards} from './initial-cards.js';
+import {FormValidator} from './FormValidator.js';
 
 // Попапы
 const popupProfile = document.querySelector(".popup_type_edit-profile");
@@ -97,7 +98,7 @@ const addCardFromForm = (evt) => {
     link: addCardFormLink,
   });
   popupFormAddCards.reset();
-  resetValidation(popupFormAddCards, validationConfig);
+  validatorFormAddCards.resetValidation();
   closePopup(popupAddCard);
 };
 
@@ -107,7 +108,7 @@ popupProfileOn.addEventListener("click", () => {
   nameProfileInput.value = nameProfile.textContent;
   jobProfileInput.value = jobProfile.textContent;
   openPopup(popupProfile);
-resetValidation(popupFormEditProfile, validationConfig);
+  validatorFormEditProfile.resetValidation();
 });
 popupProfileOff.addEventListener("click", () => closePopup(popupProfile));
 // - добавления карточек
@@ -139,5 +140,7 @@ initialCards.forEach((initialCard) => {
   openPopupViewCard();
 });
 
-
-enableValidation(validationConfig);
+const validatorFormEditProfile = new FormValidator(validationConfig, popupFormEditProfile);
+const validatorFormAddCards = new FormValidator(validationConfig, popupFormAddCards);
+validatorFormEditProfile.enableValidation();
+validatorFormAddCards.enableValidation();
