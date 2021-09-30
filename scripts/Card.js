@@ -1,3 +1,5 @@
+import {openPopupViewCard} from "./index.js";
+
 export class Card {
   constructor(cardSelector, dataCard) {
     this._cardSelector = cardSelector;
@@ -36,6 +38,7 @@ export class Card {
     cardElement.querySelector(".card__image")
       .addEventListener("click", () => {
         this._setPopupData();
+        openPopupViewCard();
       });
     cardElement.querySelector(".card__delete")
       .addEventListener("click", this._removeCard);
@@ -49,4 +52,5 @@ export class Card {
     return this._generateCard();
   }
 }
+
 

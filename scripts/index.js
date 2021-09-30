@@ -15,8 +15,11 @@ const popupAddCardOn = document.querySelector(".profile__add-button");
 const popupAddCardOff = popupAddCard.querySelector(".popup__close_type_card");
 const popupViewCardOff = popupViewCard.querySelector(".popup__close_type_card-view");
 // Формы
-const popupFormEditProfile = popupProfile.querySelector(".popup__form_type_profile");
-const popupFormAddCards = popupAddCard.querySelector(".popup__form_type_card");
+const formPopupEditProfile = popupProfile.querySelector(".popup__form_type_profile");
+const formPopupAddCards = popupAddCard.querySelector(".popup__form_type_card");
+// Инпуты из формы добавления карточки
+const addCardFormName = formPopupAddCards.querySelector(".popup__input_type_card-name");
+const addCardFormLink = formPopupAddCards.querySelector(".popup__input_type_card-link");
 // Данные из профиля
 const nameProfile = document.querySelector(".profile__name");
 const jobProfile = document.querySelector(".profile__job");
@@ -76,27 +79,18 @@ const addCard = (cardSelector, dataCard) => {
 };
 
 // Функция открытия фотографии карточки
-const openPopupViewCard = () => {
-  const cardImage = document.querySelector('.card__image');
-  cardImage.addEventListener("click", () => {
-    openPopup(popupViewCard);
-  });
+export const openPopupViewCard = () => {
+  openPopup(popupViewCard);
 }
 
 //Функция добавления карточек из формы на страницу
 const addCardFromForm = (evt) => {
   evt.preventDefault();
-  const addCardFormName = popupAddCard.querySelector(
-    ".popup__input_type_card-name"
-  ).value;
-  const addCardFormLink = popupAddCard.querySelector(
-    ".popup__input_type_card-link"
-  ).value;
   addCard(cardTemplate, {
-    name: addCardFormName,
-    link: addCardFormLink,
+    name: addCardFormName.value,
+    link: addCardFormLink.value,
   });
-  popupFormAddCards.reset();
+  formPopupAddCards.reset();
   validatorFormAddCards.resetValidation();
   closePopup(popupAddCard);
 };
@@ -124,22 +118,22 @@ popupList.forEach((popup) => {
 });
 
 // Обработчик события для формы редактирования профиля
-popupFormEditProfile.addEventListener("submit", (evt) => {
+formPopupEditProfile.addEventListener("submit", (evt) => {
   saveProfileData(evt);
 });
 
 // Обработчик события для формы добавления карточек
-popupFormAddCards.addEventListener("submit", (evt) => {
+formPopupAddCards.addEventListener("submit", (evt) => {
   addCardFromForm(evt);
 });
 
 // Добавление карточек на страницу
 initialCards.forEach((initialCard) => {
   addCard(cardTemplate, initialCard);
-  openPopupViewCard();
+  // openPopupViewCard();
 });
 
-const validatorFormEditProfile = new FormValidator(validationConfig, popupFormEditProfile);
-const validatorFormAddCards = new FormValidator(validationConfig, popupFormAddCards);
+const validatorFormEditProfile = new FormValidator(validationConfig, formPopupEditProfile);
+const validatorFormAddCards = new FormValidator(validationConfig, formPopupAddCards);
 validatorFormEditProfile.enableValidation();
 validatorFormAddCards.enableValidation();
