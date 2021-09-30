@@ -1,5 +1,6 @@
 import {Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
+import {initialCards} from './initial-cards.js';
 
 // Попапы
 const popupProfile = document.querySelector(".popup_type_edit-profile");
