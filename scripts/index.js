@@ -78,7 +78,16 @@ const addCard = (cardSelector, dataCard) => {
   cardsElement.prepend(card.createCard);
 };
 
-// Функция открытия фотографии карточки
+// Функция переноса данных из карточки в попап просмотра фотографии карточки
+export const setPopupData = (card) => {
+  popupViewCard.querySelector(".popup__card-view-photo").src =
+    card.src;
+  popupViewCard.querySelector(".popup__card-view-caption").textContent =
+    card.alt;
+  popupViewCard.querySelector(".popup__card-view-photo").alt =
+    card.alt;
+}
+// Функция открытия попапа просмотра фотографии карточки с переносом данных из карточки в попап
 export const openPopupViewCard = () => {
   openPopup(popupViewCard);
 }
@@ -130,7 +139,6 @@ formPopupAddCards.addEventListener("submit", (evt) => {
 // Добавление карточек на страницу
 initialCards.forEach((initialCard) => {
   addCard(cardTemplate, initialCard);
-  // openPopupViewCard();
 });
 
 const validatorFormEditProfile = new FormValidator(validationConfig, formPopupEditProfile);
