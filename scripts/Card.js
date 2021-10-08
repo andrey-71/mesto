@@ -1,6 +1,6 @@
 import {openPopupViewCard, setPopupData} from "./index.js";
 
-export class Card {
+export default class Card {
   constructor(cardSelector, dataCard) {
     this._cardSelector = cardSelector;
     this._name = dataCard.name;
@@ -41,7 +41,7 @@ export class Card {
     return cardElement;
   }
 
-  get createCard() {
+  createCard() {
     return this._generateCard();
   }
 }
