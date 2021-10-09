@@ -1,10 +1,11 @@
-import {openPopupViewCard, setPopupData} from "./index.js";
+import {popupWithImage} from "./index.js";
 
 export default class Card {
-  constructor(cardSelector, dataCard) {
+  constructor(cardSelector, dataCard, handleCardClick) {
     this._cardSelector = cardSelector;
     this._name = dataCard.name;
     this._link = dataCard.link;
+    this._handleCardClick = handleCardClick;
   }
 
   // Удаление карточки со траницы
@@ -21,8 +22,7 @@ export default class Card {
   _addEventListeners(cardElement) {
     cardElement.querySelector(".card__image")
       .addEventListener("click", (evt) => {
-        setPopupData(evt.target);
-        openPopupViewCard();
+        this._handleCardClick(evt);
       });
     cardElement.querySelector(".card__delete")
       .addEventListener("click", this._removeCard);

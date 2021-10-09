@@ -2,6 +2,7 @@ import Card from './Card.js';
 import {FormValidator} from './FormValidator.js';
 import {initialCards} from './initial-cards.js';
 import Section from './Section.js';
+import PopupWithImage from "./PopupWithImage.js";
 
 // Попапы
 const popupProfile = document.querySelector(".popup_type_edit-profile");
@@ -11,10 +12,10 @@ const popupViewCard = document.querySelector(".popup_type_card-view");
 const popupList = Array.from(document.querySelectorAll(".popup"));
 // Кнопки открыть/закрыть
 const popupProfileOn = document.querySelector(".profile__edit-button");
-const popupProfileOff = popupProfile.querySelector(".popup__close_type_profile");
+export const popupProfileOff = popupProfile.querySelector(".popup__close_type_profile");
 const popupAddCardOn = document.querySelector(".profile__add-button");
-const popupAddCardOff = popupAddCard.querySelector(".popup__close_type_card");
-const popupViewCardOff = popupViewCard.querySelector(".popup__close_type_card-view");
+export const popupAddCardOff = popupAddCard.querySelector(".popup__close_type_card");
+export const popupViewCardOff = popupViewCard.querySelector(".popup__close_type_card-view");
 // Формы
 const formPopupEditProfile = popupProfile.querySelector(".popup__form_type_profile");
 const formPopupAddCards = popupAddCard.querySelector(".popup__form_type_card");
@@ -42,28 +43,28 @@ const validationConfig = {
 
 
 // Функция открытия/закрытия popup'ов
-const openPopup = (popup) => {
-  document.addEventListener("keydown", closeEscPopup);
-  popup.classList.add("popup_active");
-};
-const closePopup = (popup) => {
-  document.removeEventListener("keydown", closeEscPopup);
-  popup.classList.remove("popup_active");
-};
+// const openPopup = (popup) => {
+//   document.addEventListener("keydown", closeEscPopup);
+//   popup.classList.add("popup_active");
+// };
+// const closePopup = (popup) => {
+//   document.removeEventListener("keydown", closeEscPopup);
+//   popup.classList.remove("popup_active");
+// };
 
 // Функция закрытия popup'а при нажатии на Esc
-const closeEscPopup = (evt) => {
-  if (evt.key === "Escape") {
-    closePopup(document.querySelector(".popup_active"));
-  }
-};
+// const closeEscPopup = (evt) => {
+//   if (evt.key === "Escape") {
+//     closePopup(document.querySelector(".popup_active"));
+//   }
+// };
 
 // Функция закрытия popup'а для слушателя клика на overlay
-const closeOverlayPopup = (event) => {
-  if (event.currentTarget === event.target) {
-    closePopup(event.currentTarget);
-  }
-};
+// const closeOverlayPopup = (event) => {
+//   if (event.currentTarget === event.target) {
+//     closePopup(event.currentTarget);
+//   }
+// };
 
 // Функция отправки формы из edit-profile с сохранением результата в профиль
 const saveProfileData = (evt) => {
@@ -74,18 +75,18 @@ const saveProfileData = (evt) => {
 };
 
 // Функция переноса данных из карточки в попап просмотра фотографии карточки
-export const setPopupData = (card) => {
-  popupViewCard.querySelector(".popup__card-view-photo").src =
-    card.src;
-  popupViewCard.querySelector(".popup__card-view-caption").textContent =
-    card.alt;
-  popupViewCard.querySelector(".popup__card-view-photo").alt =
-    card.alt;
-}
+// export const setPopupData = (card) => {
+//   popupViewCard.querySelector(".popup__card-view-photo").src =
+//     card.src;
+//   popupViewCard.querySelector(".popup__card-view-caption").textContent =
+//     card.alt;
+//   popupViewCard.querySelector(".popup__card-view-photo").alt =
+//     card.alt;
+// }
 // Функция открытия попапа просмотра фотографии карточки с переносом данных из карточки в попап
-export const openPopupViewCard = () => {
-  openPopup(popupViewCard);
-}
+// export const openPopupViewCard = () => {
+//   openPopup(popupViewCard);
+// }
 
 //Функция добавления карточек из массива на страницу
 // const addCard = (cardSelector, dataCard) => {
@@ -96,7 +97,11 @@ export const openPopupViewCard = () => {
 const cardList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(cardTemplate, item);
+    const card = new Card(cardTemplate, item,
+      function handleCardClick(evt) {
+        popupWithImage.open(evt.target);
+    }
+  );
     const cardElement = card.createCard();
     cardList.addItem(cardElement);
   }
@@ -129,19 +134,19 @@ popupProfileOn.addEventListener("click", () => {
   openPopup(popupProfile);
   validatorFormEditProfile.resetValidation();
 });
-popupProfileOff.addEventListener("click", () => closePopup(popupProfile));
+// popupProfileOff.addEventListener("click", () => closePopup(popupProfile));
 // - добавления карточек
 popupAddCardOn.addEventListener("click", () => openPopup(popupAddCard));
-popupAddCardOff.addEventListener("click", () => closePopup(popupAddCard));
+// popupAddCardOff.addEventListener("click", () => closePopup(popupAddCard));
 // - просмотра фотографии карточки (только закрытие popup'а, слушатель открытия - внутри createCard)
-popupViewCardOff.addEventListener("click", () => closePopup(popupViewCard));
+// popupViewCardOff.addEventListener("click", () => closePopup(popupViewCard));
 
 // Установка слушателей клика на overlay
-popupList.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    closeOverlayPopup(evt);
-  });
-});
+// popupList.forEach((popup) => {
+//   popup.addEventListener("mousedown", (evt) => {
+//     closeOverlayPopup(evt);
+//   });
+// });
 
 // Обработчик события для формы редактирования профиля
 formPopupEditProfile.addEventListener("submit", (evt) => {
@@ -163,7 +168,7 @@ const validatorFormAddCards = new FormValidator(validationConfig, formPopupAddCa
 validatorFormEditProfile.enableValidation();
 validatorFormAddCards.enableValidation();
 
-
+export const popupWithImage = new PopupWithImage(popupViewCard);
 
 
 cardList.setItem();
