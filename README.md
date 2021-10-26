@@ -1,12 +1,10 @@
 # Место
 
-Проектная работа 7 спринта 4 курса факультета ["Веб-разработчик"](https://practicum.yandex.ru/web/?utm_source=yandex&utm_medium=cpc&utm_campaign=Yan_Sch_RF_Webr_Razrab_Des_Intro_460&utm_content=sty_search:s_none:cid_56600998:gid_4359516496:pid_23387311960:aid_9838725511:crid_0:rid_:p_1:pty_premium:mty_syn:mkw_:dty_desktop:cgcid_0:rn_Москва:rid_213&utm_term=разработка%20web&yclid=4769457341696616776) образовательной платформы [Яндекс.Практикум](https://practicum.yandex.ru/).
+Проектная работа 8 спринта 4 курса факультета ["Веб-разработчик"](https://practicum.yandex.ru/web/?utm_source=yandex&utm_medium=cpc&utm_campaign=Yan_Sch_RF_Webr_Razrab_Des_Intro_460&utm_content=sty_search:s_none:cid_56600998:gid_4359516496:pid_23387311960:aid_9838725511:crid_0:rid_:p_1:pty_premium:mty_syn:mkw_:dty_desktop:cgcid_0:rn_Москва:rid_213&utm_term=разработка%20web&yclid=4769457341696616776) образовательной платформы [Яндекс.Практикум](https://practicum.yandex.ru/).
 
 
 ## Описание проекта:
 Одностраничный веб-сайт, позволяющий пользователям обмениваться фотографиями.
-
-**[Проект на GitHub Pages](https://andrey-71.github.io/mesto/)**
 
 
 ## Функционал:
@@ -39,10 +37,18 @@
 ### 3. Java Script
 * Работа с DOM-элементами;
 * Визуализация контента на странице путём клонирования шаблона `<template>` и загрузки данных из массива;
-* Обработчики событий `click`, `submit`, `mousedown`, `keydown`;
+* Обработчики событий `click`, `submit`, `mousedown`, `keyup`;
 * Валидация совместно со встроенной браузерной валидацией;
-* ES6-классы;
+* Объектно-ориентированный код
+* ES6-классы, наследование;
 * JS-модули.
+
+### 4. Webpack
+* Сборка и минимизация файлов `.html`, `.css`, `.js`;
+* Сборка шрифтов (`.woff`, `.woff2`, `.eot`, `.ttf`);
+* Сборка картинок (`.png`, `.svg`, `.jpg`, `.gif`);
+* Траспиляция синтаксиса ES6 в поддерживаемый браузерами формат с помощью Babel;
+* Настройка окружения для разработки.
 
 
 ## Инструкция по установке:
@@ -54,12 +60,11 @@
 
 
 ## Планы по доработке проекта:
-* Реализация сборки проекта через Webpack;
 * Подключение проекта к серверу;
 * Перенос проекта на React;
 
 
 ## Требования к проекту:
-* [Чеклист](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-7/index.html)
+* [Чеклист](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-8/index.html)
 
 

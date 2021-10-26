@@ -48,8 +48,8 @@ export const formPopupUserInfo = popupUserInfo.querySelector('.popup__form_type_
 export const formPopupAddCards = popupAddCard.querySelector('.popup__form_type_card');
 
 // Данные из профиля
-export let nameUserInfo = document.querySelector('.profile__name');
-export let aboutUserInfo = document.querySelector('.profile__job');
+export const nameUserInfo = document.querySelector('.profile__name');
+export const aboutUserInfo = document.querySelector('.profile__job');
 
 // Поля формы редактирования профиля
 export const nameUserInfoInput = popupUserInfo.querySelector('.popup__input_type_profile-name');
