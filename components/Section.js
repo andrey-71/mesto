@@ -5,10 +5,12 @@ export default class Section {
     this._cardSelector = cardsSelector;
   }
 
+  // Добавление карточки
   addItem(element) {
     this._cardSelector.prepend(element);
   }
 
+  // Создание карточек
   setItem() {
     this._renderedItems.forEach(item => {
       this._renderer(item);
