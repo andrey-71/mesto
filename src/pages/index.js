@@ -31,29 +31,23 @@ const handleCardClick = (evt) => {
   cardViewPopup.open(evt.target);
 }
 
+//Создание новой карточки
+const createNewCard = (data) => {
+  const card = new Card(cardTemplate, data, handleCardClick);
+  const cardElement = card.createCard();
+  cardList.addItem(cardElement);
+};
+
 // Добавление карточек на страницу
 const cardList = new Section({
   items: initialCards,
-  renderer: (item) => {
-    const card = new Card(cardTemplate, item, handleCardClick);
-    const cardElement = card.createCard();
-    cardList.addItem(cardElement);
+  renderer: (data) => {
+    createNewCard(data);
   }
 }, cardsElement);
 
 // Загрузка карточек на страницу
 cardList.setItem();
-
-//Создание новой карточки
-const createNewCard = (data) => {
-  const formCard = new Card(cardTemplate, {
-    name: data.nameImage,
-    link: data.linkImage
-  });
-
-  const formCardElement = formCard.createCard();
-  cardList.addItem(formCardElement);
-};
 
 
 // Валидация формы профиля
