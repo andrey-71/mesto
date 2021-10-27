@@ -1,13 +1,14 @@
 export default class FormValidator {
   constructor(config, formElement) {
     this._inputSelector = config.inputSelector;
-    this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._formElement = formElement;
     this._inputList = Array.from(this._formElement
       .querySelectorAll(this._inputSelector));
+    this._submitButton = this._formElement
+      .querySelector(config.submitButtonSelector);
   }
 
   // Показать текст ошибки валидации
@@ -37,27 +38,21 @@ export default class FormValidator {
 
   // Проверка инпутов на валидацию
   _hasInvalidInput() {
-    const inputList = Array.from(this._formElement
-      .querySelectorAll(this._inputSelector));
-    return inputList.some((inputElement) => {
+    return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
   // Установка неактивной кнопки
   _disableSubmitButton() {
-    const button = this._formElement
-      .querySelector(this._submitButtonSelector);
-    button.classList.add(this._inactiveButtonClass);
-    button.disabled = true;
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
   // Установка активной кнопки
   _enableSubmitButton() {
-    const button = this._formElement
-      .querySelector(this._submitButtonSelector);
-    button.classList.remove(this._inactiveButtonClass);
-    button.disabled = false;
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
   }
 
   // Переключение состояния кнопки
