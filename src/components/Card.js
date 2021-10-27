@@ -4,11 +4,14 @@ export default class Card {
     this._name = dataCard.nameImage;
     this._link = dataCard.linkImage;
     this._handleCardClick = handleCardClick;
+    this._card = this._cardSelector.querySelector('.card').cloneNode(true);
+    this._removeCard = this._removeCard.bind(this);
   }
 
   // Удаление карточки со траницы
   _removeCard(evt) {
-    evt.target.closest('.card').remove();
+    this._card.remove();
+    this._card = null;
   }
 
   // Лайк на карточке
@@ -30,13 +33,11 @@ export default class Card {
 
   // Перенос данных из карточек на страницу
   _generateCard() {
-    const cardElement = this._cardSelector.querySelector('.card').cloneNode(true);
-    cardElement.querySelector('.card__image').src = this._link;
-    cardElement.querySelector('.card__caption').textContent = this._name;
-    cardElement.querySelector('.card__image').alt = this._name;
-    this._addEventListeners(cardElement);
-
-    return cardElement;
+    this._card.querySelector('.card__image').src = this._link;
+    this._card.querySelector('.card__caption').textContent = this._name;
+    this._card.querySelector('.card__image').alt = this._name;
+    this._addEventListeners(this._card);
+    return this._card;
   }
 
   createCard() {
