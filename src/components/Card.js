@@ -16,7 +16,7 @@ export default class Card {
 
   // Лайк на карточке
   _toggleLikeCard(evt) {
-    evt.target.classList.toggle('card__heart_active');
+    evt.target.classList.toggle('card__like_active');
   }
 
   // Добавление обработчиков событий для карточек
@@ -27,7 +27,7 @@ export default class Card {
       });
     cardElement.querySelector('.card__delete')
       .addEventListener('click', this._removeCard);
-    cardElement.querySelector('.card__heart')
+    cardElement.querySelector('.card__like')
       .addEventListener('click', this._toggleLikeCard);
   }
 

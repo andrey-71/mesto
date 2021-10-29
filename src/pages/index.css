@@ -40,9 +40,11 @@
 @import url(../blocks/card/__info/card__info.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__delete/card__delete.css);
-@import url(../blocks/card/__heart/card__heart.css);
+@import url(../blocks/card/__like-section/card__like-section.css);
+@import url(../blocks/card/__like/card__like.css);
+@import url(../blocks/card/__like-number/card__like-number.css);
 /*card mod*/
-@import url(../blocks/card/__heart/_active/card__heart_active.css);
+@import url(../blocks/card/__like/_active/card__like_active.css);
 
 /*footer bl*/
 @import url(../blocks/footer/footer.css);
