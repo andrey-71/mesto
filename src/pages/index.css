@@ -60,7 +60,7 @@
 @import url(../blocks/popup/__input-element/popup__input-element.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__input-error/popup__input-error.css);
-@import url(../blocks/popup/__save-button/popup__save-button.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__card-view-container/popup__card-view-container.css);
 @import url(../blocks/popup/__card-view-photo/popup__card-view-photo.css);
@@ -69,7 +69,7 @@
 @import url(../blocks/popup/popup_active.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_error.css);
 @import url(../blocks/popup/__input-error/popup__input-error_visible.css);
-@import url(../blocks/popup/__save-button/_disabled/popup__save-button_disabled.css);
+@import url(../blocks/popup/__submit-button/_disabled/popup__submit-button_disabled.css);
 /*popup-edit-profile mod*/
 @import url(../blocks/popup/_type/popup_type_edit-profile.css);
 @import url(../blocks/popup/__form/_type/popup__form_type_profile.css);

@@ -1,6 +1,6 @@
 .popup__title {
   margin: 0;
-  padding-bottom: 48px;
+  padding-bottom: 24px; /* исправить */
   font-family: "Inter", "Arial", "Helvetica", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

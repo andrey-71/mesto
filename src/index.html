@@ -84,7 +84,7 @@
           id="input-profile-job-error"
         ></span>
       </label>
-      <button class="popup__save-button" type="submit">Сохранить</button>
+      <button class="popup__submit-button" type="submit">Сохранить</button>
     </form>
     <button
       class="popup__close popup__close_type_profile"
@@ -126,7 +126,7 @@
         />
         <span class="popup__input-error" id="input-card-link-error"></span>
       </label>
-      <button class="popup__save-button" type="submit">Создать</button>
+      <button class="popup__submit-button" type="submit">Создать</button>
     </form>
     <button
       class="popup__close popup__close_type_card"
@@ -142,6 +142,24 @@
     <p class="popup__card-view-caption"></p>
     <button
       class="popup__close popup__close_type_card-view"
+      type="button"
+    ></button>
+  </div>
+</div>
+
+<!--Popup delete card-->
+<div class="popup popup_type_delete-card">
+  <div class="popup__container">
+    <h2 class="popup__title">Вы уверены?</h2>
+    <form
+      class="popup__form popup__form_type_delete-card"
+      name="deleteCard"
+      novalidate
+    >
+      <button class="popup__submit-button" type="submit">Да</button>
+    </form>
+    <button
+      class="popup__close popup__close_type_card"
       type="button"
     ></button>
   </div>
