@@ -1,15 +1,16 @@
 export default class Card {
-  constructor(cardSelector, dataCard, handleCardClick) {
+  constructor(cardSelector, dataCard, handleCardClick, deleteCardClick) {
     this._cardSelector = cardSelector;
     this._name = dataCard.nameImage;
     this._link = dataCard.linkImage;
     this._handleCardClick = handleCardClick;
+    this._deleteCardClick = deleteCardClick;
     this._card = this._cardSelector.querySelector('.card').cloneNode(true);
     this._removeCard = this._removeCard.bind(this);
   }
 
   // Удаление карточки со траницы
-  _removeCard(evt) {
+  _removeCard() {
     this._card.remove();
     this._card = null;
   }
@@ -25,8 +26,9 @@ export default class Card {
       .addEventListener('click', (evt) => {
         this._handleCardClick(evt);
       });
-    cardElement.querySelector('.card__delete')
-      .addEventListener('click', this._removeCard);
+     cardElement.querySelector('.card__delete')
+       .addEventListener('click', this._deleteCardClick);
+    // .addEventListener('click', this._removeCard);
     cardElement.querySelector('.card__like')
       .addEventListener('click', this._toggleLikeCard);
   }

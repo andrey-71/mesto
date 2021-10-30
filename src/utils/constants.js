@@ -36,15 +36,19 @@ export const validationConfig = {
 
 // Попапы
 export const popupUserInfo = document.querySelector('.popup_type_edit-profile');
+export const popupEditAvatar = document.querySelector('.popup_type_edit-avatar')
 export const popupAddCard = document.querySelector('.popup_type_add-card');
+export const popupDeleteCard = document.querySelector('.popup_type_delete-card');
 export const popupViewCard = document.querySelector('.popup_type_card-view');
 
 // Кнопки открытия попапов
 export const openPopupUserInfo = document.querySelector('.profile__edit-button');
 export const openPopupAddCard = document.querySelector('.profile__add-button');
+export const openPopupEditAvatar = document.querySelector('.profile__edit-avatar');
 
 // Формы
 export const formPopupUserInfo = popupUserInfo.querySelector('.popup__form_type_profile');
+export const formPopupEditAvatar = popupEditAvatar.querySelector('.popup__form_type_edit-avatar');
 export const formPopupAddCards = popupAddCard.querySelector('.popup__form_type_card');
 
 // Данные из профиля

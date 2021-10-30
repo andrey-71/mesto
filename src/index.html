@@ -21,11 +21,13 @@
     <!--Profile-->
     <section class="profile">
       <div class="profile__user-data">
-        <img
-          src="<%=require('./images/profile-avatar.jpg')%>"
-          alt="Фотография пользователя"
-          class="profile__avatar"
-        />
+        <button class="profile__edit-avatar" type="button">
+          <img
+            src="<%=require('./images/profile-avatar.jpg')%>"
+            alt="Фотография пользователя"
+            class="profile__avatar"
+          />
+        </button>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <p class="profile__job">Исследователь океана</p>
@@ -87,7 +89,35 @@
       <button class="popup__submit-button" type="submit">Сохранить</button>
     </form>
     <button
-      class="popup__close popup__close_type_profile"
+      class="popup__close"
+      type="button"
+    ></button>
+  </div>
+</div>
+
+<!--Popup edit user avatar-->
+<div class="popup popup_type_edit-avatar">
+  <div class="popup__container">
+    <h2 class="popup__title">Обновить аватар</h2>
+    <form
+      class="popup__form popup__form_type_edit-avatar"
+      name="editAvatar"
+    >
+      <label class="popup__input-element">
+        <input
+          type="url"
+          placeholder="Ссылка на картинку"
+          class="popup__input popup__input_type_avatar-link"
+          id="input-avatar-link"
+          name="linkAvatar"
+          required
+        />
+        <span class="popup__input-error" id="input-avatar-link-error"></span>
+      </label>
+      <button class="popup__submit-button" type="submit">Сохранить</button>
+    </form>
+    <button
+      class="popup__close"
       type="button"
     ></button>
   </div>
@@ -129,9 +159,27 @@
       <button class="popup__submit-button" type="submit">Создать</button>
     </form>
     <button
-      class="popup__close popup__close_type_card"
+      class="popup__close"
       type="button"
     ></button>
+  </div>
+</div>
+
+<!--Popup delete card-->
+<div class="popup popup_type_delete-card">
+  <div class="popup__container">
+    <form
+      class="popup__form popup__form_type_delete-card"
+      name="addCards"
+      novalidate
+    >
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button class="popup__submit-button" type="button">Да</button>
+      <button
+        class="popup__close"
+        type="button"
+      ></button>
+    </form>
   </div>
 </div>
 
@@ -141,29 +189,12 @@
     <img src="#" alt="#" class="popup__card-view-photo"/>
     <p class="popup__card-view-caption"></p>
     <button
-      class="popup__close popup__close_type_card-view"
+      class="popup__close"
       type="button"
     ></button>
   </div>
 </div>
 
-<!--Popup delete card-->
-<div class="popup popup_type_delete-card">
-  <div class="popup__container">
-    <h2 class="popup__title">Вы уверены?</h2>
-    <form
-      class="popup__form popup__form_type_delete-card"
-      name="deleteCard"
-      novalidate
-    >
-      <button class="popup__submit-button" type="submit">Да</button>
-    </form>
-    <button
-      class="popup__close popup__close_type_card"
-      type="button"
-    ></button>
-  </div>
-</div>
 
 <!--Template card-->
 <template id="card-template">

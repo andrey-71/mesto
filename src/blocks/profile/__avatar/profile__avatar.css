@@ -1,13 +1,6 @@
 .profile__avatar {
-  width: 120px;
+  position: relative;
+  width: 100%;
   border-radius: 50%;
-  margin-right: 30px;
-}
-
-@media screen and (max-width: 767px) {
-  .profile__avatar {
-    margin-right: 0;
-    margin-bottom: 26px;
-    align-self: center;
-  }
+  z-index: -1;
 }

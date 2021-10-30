@@ -3,6 +3,7 @@ import './index.css';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
+import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
@@ -10,11 +11,15 @@ import UserInfo from '../components/UserInfo.js';
 import {
   initialCards,
   popupUserInfo,
+  popupEditAvatar,
   popupAddCard,
+  popupDeleteCard,
   popupViewCard,
   openPopupUserInfo,
   openPopupAddCard,
+  openPopupEditAvatar,
   formPopupUserInfo,
+  formPopupEditAvatar,
   formPopupAddCards,
   nameUserInfo,
   aboutUserInfo,
@@ -26,14 +31,17 @@ import {
 } from '../utils/constants.js';
 
 
-// Функция открытия попапа просмотра карточки
+// Открытие попапа просмотра карточки
 const handleCardClick = (evt) => {
   cardViewPopup.open(evt.target);
+}
+const deleteCardClick = (evt) => {
+  deleteCardPopup.open(evt.target);
 }
 
 //Создание новой карточки
 const createNewCard = (data) => {
-  const card = new Card(cardTemplate, data, handleCardClick);
+  const card = new Card(cardTemplate, data, handleCardClick, deleteCardClick);
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
 };
@@ -53,6 +61,9 @@ cardList.setItem();
 // Валидация формы профиля
 const validatorFormEditProfile = new FormValidator(validationConfig, formPopupUserInfo);
 validatorFormEditProfile.enableValidation();
+// Валидация формы редактирования аватара
+const validatorFormEditAvatar = new FormValidator(validationConfig, formPopupEditAvatar);
+validatorFormEditAvatar.enableValidation();
 // Валидация формы карточки
 const validatorFormAddCards = new FormValidator(validationConfig, formPopupAddCards);
 validatorFormAddCards.enableValidation();
@@ -65,18 +76,25 @@ const userInfo = new UserInfo({
 });
 
 
-// Попап просмотра фотографии
-const cardViewPopup = new PopupWithImage(popupViewCard);
 // Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(popupUserInfo,
   function submitUserInfoForm(data) {
     userInfo.setUserInfo(data);
+  });
+// Попап редактирования аватара пользователя
+const editAvatarPopup = new PopupWithForm(popupEditAvatar,
+  function submitUserAvatarForm(data) {
+    console.log(data)
   });
 // Попап добавления карточки
 const addCardPopup = new PopupWithForm(popupAddCard,
   function submitAddCardForm(data) {
     createNewCard(data);
   });
+// Попап удаления карточки
+const deleteCardPopup = new Popup(popupDeleteCard);
+// Попап просмотра фотографии
+const cardViewPopup = new PopupWithImage(popupViewCard);
 
 
 // Обработчики события для попапов:
@@ -87,13 +105,21 @@ openPopupUserInfo.addEventListener('click', () => {
   validatorFormEditProfile.resetValidation();
   userInfoPopup.open();
 });
+// - редактирования аватара пользователя
+openPopupEditAvatar.addEventListener('click', () => {
+  validatorFormEditAvatar.resetValidation();
+  editAvatarPopup.open();
+});
 // - добавления карточки
 openPopupAddCard.addEventListener('click', () => {
   validatorFormAddCards.resetValidation();
   addCardPopup.open();
 });
+// - удаления карточки
 
 // Установка обработчиков на попапы
 cardViewPopup.setEventListeners();
 userInfoPopup.setEventListeners();
+editAvatarPopup.setEventListeners();
 addCardPopup.setEventListeners();
+deleteCardPopup.setEventListeners();

@@ -24,6 +24,7 @@
 @import url(../blocks/profile/profile.css);
 /*profile el*/
 @import url(../blocks/profile/__user-data/profile__user-data.css);
+@import url(../blocks/profile/__edit-avatar/profile__edit-avatar.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
@@ -75,14 +76,17 @@
 @import url(../blocks/popup/__form/_type/popup__form_type_profile.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profile-name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_profile-job.css);
-@import url(../blocks/popup/__close/_type/popup__close_type_profile.css);
+/*popup-edit-avatar mod*/
+@import url(../blocks/popup/_type/popup_type_edit-avatar.css);
+@import url(../blocks/popup/__form/_type/popup__form_type_edit-avatar.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_avatar-link.css);
 /*popup-add-card mod*/
 @import url(../blocks/popup/_type/popup_type_add-card.css);
 @import url(../blocks/popup/__form/_type/popup__form_type_card.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_card-name.css);
 @import url(../blocks/popup/__input/_type/popup__input_type_card-link.css);
-@import url(../blocks/popup/__close/_type/popup__close_type_card.css);
+/*popup-delete-card mod*/
+@import url(../blocks/popup/_type/popup_type_delete-card.css);
 /*popup-card-view mod*/
 @import url(../blocks/popup/_type/popup_type_card-view.css);
-@import url(../blocks/popup/__close/_type/popup__close_type_card-view.css);
 
