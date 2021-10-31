@@ -19,7 +19,6 @@ export default class PopupWithForm extends Popup {
     const inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
     inputList.forEach((inputElement) => {
       inputValuesForm[inputElement.name] = inputElement.value;
-      console.log(inputValuesForm.nameImage);
     });
 
     return inputValuesForm;

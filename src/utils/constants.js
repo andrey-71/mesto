@@ -1,30 +1,3 @@
-export const initialCards = [
-  {
-    nameImage: 'Архыз',
-    linkImage: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    nameImage: 'Челябинская область',
-    linkImage: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    nameImage: 'Иваново',
-    linkImage: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    nameImage: 'Камчатка',
-    linkImage: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    nameImage: 'Холмогорский район',
-    linkImage: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    nameImage: 'Байкал',
-    linkImage: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  },
-];
-
 //Данные для валидации
 export const validationConfig = {
   inputSelector: '.popup__input',
@@ -54,6 +27,7 @@ export const formPopupAddCards = popupAddCard.querySelector('.popup__form_type_c
 // Данные из профиля
 export const nameUserInfo = document.querySelector('.profile__name');
 export const aboutUserInfo = document.querySelector('.profile__job');
+export const avatarUserInfo = document.querySelector('.profile__avatar');
 
 // Поля формы редактирования профиля
 export const nameUserInfoInput = popupUserInfo.querySelector('.popup__input_type_profile-name');

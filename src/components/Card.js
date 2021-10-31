@@ -1,8 +1,8 @@
 export default class Card {
   constructor(cardSelector, dataCard, handleCardClick, deleteCardClick) {
     this._cardSelector = cardSelector;
-    this._name = dataCard.nameImage;
-    this._link = dataCard.linkImage;
+    this._name = dataCard.name;
+    this._link = dataCard.link;
     this._handleCardClick = handleCardClick;
     this._deleteCardClick = deleteCardClick;
     this._card = this._cardSelector.querySelector('.card').cloneNode(true);

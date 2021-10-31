@@ -23,14 +23,14 @@
       <div class="profile__user-data">
         <button class="profile__edit-avatar" type="button">
           <img
-            src="<%=require('./images/profile-avatar.jpg')%>"
+            src=""
             alt="Фотография пользователя"
             class="profile__avatar"
           />
         </button>
         <div class="profile__info">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <p class="profile__job">Исследователь океана</p>
+          <h1 class="profile__name"></h1>
+          <p class="profile__job"></p>
           <button class="profile__edit-button" type="button"></button>
         </div>
       </div>
@@ -109,7 +109,7 @@
           placeholder="Ссылка на картинку"
           class="popup__input popup__input_type_avatar-link"
           id="input-avatar-link"
-          name="linkAvatar"
+          name="avatarUser"
           required
         />
         <span class="popup__input-error" id="input-avatar-link-error"></span>
@@ -138,7 +138,7 @@
           placeholder="Название"
           class="popup__input popup__input_type_card-name"
           id="input-card-name"
-          name="nameImage"
+          name="name"
           required
           minlength="2"
           maxlength="30"
@@ -151,7 +151,7 @@
           placeholder="Ссылка на картинку"
           class="popup__input popup__input_type_card-link"
           id="input-card-link"
-          name="linkImage"
+          name="link"
           required
         />
         <span class="popup__input-error" id="input-card-link-error"></span>
@@ -174,7 +174,7 @@
       novalidate
     >
       <h2 class="popup__title">Вы уверены?</h2>
-      <button class="popup__submit-button" type="button">Да</button>
+      <button class="popup__submit-button" type="submit">Да</button>
       <button
         class="popup__close"
         type="button"

@@ -7,9 +7,9 @@ import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 
 import {
-  initialCards,
   popupUserInfo,
   popupEditAvatar,
   popupAddCard,
@@ -23,6 +23,7 @@ import {
   formPopupAddCards,
   nameUserInfo,
   aboutUserInfo,
+  avatarUserInfo,
   nameUserInfoInput,
   aboutUserInfoInput,
   cardTemplate,
@@ -48,14 +49,82 @@ const createNewCard = (data) => {
 
 // Добавление карточек на страницу
 const cardList = new Section({
-  items: initialCards,
   renderer: (data) => {
     createNewCard(data);
   }
 }, cardsElement);
 
-// Загрузка карточек на страницу
-cardList.setItem();
+
+// Работа с API сервера
+const api = new Api({
+  serverUrl: 'https://mesto.nomoreparties.co/v1/cohort-29/',
+  receiveRequestHeaders: {
+    authorization: '47bf35c3-c8a1-495a-9dd2-8537c372d068'
+  },
+  sendRequestHeaders: {
+    authorization: '47bf35c3-c8a1-495a-9dd2-8537c372d068',
+    'Content-Type': 'application/json'
+  }
+});
+
+// Загрузка данных профиля
+api.getUserInfo()
+  .then((res) => {
+    userInfo.setUserInfo(res);
+    userInfo.setUserAvatar(res);
+    console.log(userInfo.userId(res)); // del
+  })
+  .catch(err => console.log(`При загрузке данных пользователя произошла ошибка: ${err}`));
+
+// Загрузка карточек
+api.getInitialCards()
+  .then((res) => {
+    cardList.setItem(res);
+    console.log(res);
+  })
+  .catch(err => console.log(`При загрузке данных карточек произошла ошибка: ${err}`));
+
+// Данные пользователя
+const userInfo = new UserInfo({
+  name: nameUserInfo,
+  info: aboutUserInfo,
+  avatar: avatarUserInfo
+});
+
+// Попап редактирования профиля
+const userInfoPopup = new PopupWithForm(popupUserInfo,
+  function submitUserInfoForm(data) {
+    api.patchUserInfo(data)
+      .then((res) => {
+        userInfo.setUserInfo(res);
+    })
+      .catch(err => console.log(`При отправке данных пользователя произошла ошибка: ${err}`));
+  });
+// Попап редактирования аватара пользователя
+const editAvatarPopup = new PopupWithForm(popupEditAvatar,
+  function submitUserAvatarForm(data) {
+    api.patchAvatarUserInfo(data)
+      .then((res) => {
+        userInfo.setUserAvatar(res);
+      })
+      .catch(err => console.log(`При отправке данных аватара пользователя произошла ошибка: ${err}`));
+  });
+// Попап добавления карточки
+const addCardPopup = new PopupWithForm(popupAddCard,
+  function submitAddCardForm(data) {
+    api.patchNewCard(data)
+      .then((res) => {
+        createNewCard(res);
+      })
+      .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`));
+  });
+// Попап удаления карточки
+const deleteCardPopup = new PopupWithForm(popupDeleteCard,
+  function submitRequestDeleteCard(data) {
+    console.log(data);
+  });
+// Попап просмотра фотографии
+const cardViewPopup = new PopupWithImage(popupViewCard);
 
 
 // Валидация формы профиля
@@ -67,34 +136,6 @@ validatorFormEditAvatar.enableValidation();
 // Валидация формы карточки
 const validatorFormAddCards = new FormValidator(validationConfig, formPopupAddCards);
 validatorFormAddCards.enableValidation();
-
-
-// Данные пользователя
-const userInfo = new UserInfo({
-  name: nameUserInfo,
-  info: aboutUserInfo
-});
-
-
-// Попап редактирования профиля
-const userInfoPopup = new PopupWithForm(popupUserInfo,
-  function submitUserInfoForm(data) {
-    userInfo.setUserInfo(data);
-  });
-// Попап редактирования аватара пользователя
-const editAvatarPopup = new PopupWithForm(popupEditAvatar,
-  function submitUserAvatarForm(data) {
-    console.log(data)
-  });
-// Попап добавления карточки
-const addCardPopup = new PopupWithForm(popupAddCard,
-  function submitAddCardForm(data) {
-    createNewCard(data);
-  });
-// Попап удаления карточки
-const deleteCardPopup = new Popup(popupDeleteCard);
-// Попап просмотра фотографии
-const cardViewPopup = new PopupWithImage(popupViewCard);
 
 
 // Обработчики события для попапов:
@@ -123,3 +164,10 @@ userInfoPopup.setEventListeners();
 editAvatarPopup.setEventListeners();
 addCardPopup.setEventListeners();
 deleteCardPopup.setEventListeners();
+
+
+popupDeleteCard.querySelector('.popup__submit-button').addEventListener('click', () => {
+  console.log(popupDeleteCard);
+  deleteCardPopup.close();
+})
+
