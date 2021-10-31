@@ -3,9 +3,9 @@ import './index.css';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithDeleteCard from '../components/PopupWithDeleteCard.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
@@ -36,13 +36,24 @@ import {
 const handleCardClick = (evt) => {
   cardViewPopup.open(evt.target);
 }
-const deleteCardClick = (evt) => {
-  deleteCardPopup.open(evt.target);
-}
+
 
 //Создание новой карточки
 const createNewCard = (data) => {
-  const card = new Card(cardTemplate, data, handleCardClick, deleteCardClick);
+  const card = new Card(cardTemplate, data, handleCardClick, {
+    handleDeleteCard: () => {
+      deleteCardPopup.submitRequestDeleteCard(() => {
+        api.deleteCard(data)
+          .then((res) => {
+            card.removeCard();
+            console.log(res.message);
+            deleteCardPopup.close();
+        })
+          .catch(err => console.log(`При удалении карточки произошла ошибка: ${err}`));
+      });
+      deleteCardPopup.open();
+    }
+  });
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
 };
@@ -72,7 +83,6 @@ api.getUserInfo()
   .then((res) => {
     userInfo.setUserInfo(res);
     userInfo.setUserAvatar(res);
-    console.log(userInfo.userId(res)); // del
   })
   .catch(err => console.log(`При загрузке данных пользователя произошла ошибка: ${err}`));
 
@@ -119,10 +129,7 @@ const addCardPopup = new PopupWithForm(popupAddCard,
       .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`));
   });
 // Попап удаления карточки
-const deleteCardPopup = new PopupWithForm(popupDeleteCard,
-  function submitRequestDeleteCard(data) {
-    console.log(data);
-  });
+const deleteCardPopup = new PopupWithDeleteCard(popupDeleteCard);
 // Попап просмотра фотографии
 const cardViewPopup = new PopupWithImage(popupViewCard);
 
@@ -156,7 +163,7 @@ openPopupAddCard.addEventListener('click', () => {
   validatorFormAddCards.resetValidation();
   addCardPopup.open();
 });
-// - удаления карточки
+
 
 // Установка обработчиков на попапы
 cardViewPopup.setEventListeners();
@@ -164,10 +171,4 @@ userInfoPopup.setEventListeners();
 editAvatarPopup.setEventListeners();
 addCardPopup.setEventListeners();
 deleteCardPopup.setEventListeners();
-
-
-popupDeleteCard.querySelector('.popup__submit-button').addEventListener('click', () => {
-  console.log(popupDeleteCard);
-  deleteCardPopup.close();
-})
 

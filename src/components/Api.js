@@ -70,7 +70,7 @@ export default class Api {
   deleteCard(data) {
     return fetch(`${this._serverUrl}cards/${data._id}`, {
       method: 'DELETE',
-      headers: this._receiveRequestHeaders,
+      headers: this._receiveRequestHeaders
     })
       .then(res => this._handleResult(res));
   }
