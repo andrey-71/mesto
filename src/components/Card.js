@@ -3,8 +3,8 @@ export default class Card {
     cardSelector,
     dataCard,
     userId,
-    handleCardClick,
     {
+      handleCardClick,
       handleDeleteCard,
       addLike,
       removeLike
@@ -15,7 +15,7 @@ export default class Card {
     this._userId = userId;
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
-    this._setLike = addLike;
+    this._putLike = addLike;
     this._deleteLike = removeLike;
     this._card = this._cardSelector.querySelector('.card').cloneNode(true);
     this.removeCard = this.removeCard.bind(this);
@@ -24,24 +24,24 @@ export default class Card {
   // Переключение лайка
   toggleLikeCard() {
     if (this._card.querySelector('.card__like').classList.contains('card__like_active')) {
-      this.removeLikeCard(this._dataCard);
+      this._removeLikeCard(this._dataCard);
     } else {
-      this.addLikeCard(this._dataCard);
+      this._addLikeCard(this._dataCard);
     }
   }
 
   // Поставить лайк
-  addLikeCard(data) {
+  _addLikeCard() {
     this._card.querySelector('.card__like').classList.add('card__like_active');
-    this._setLike(data);
+    this._putLike();
   }
   // Снять лайк
-  removeLikeCard(data) {
+  _removeLikeCard() {
     this._card.querySelector('.card__like').classList.remove('card__like_active');
-    this._deleteLike(data);
+    this._deleteLike();
   }
 
-  // Отрисовка установленных лайков при загрузке страницы
+  // Отрисовка активных лайков при загрузке страницы
   _setLikesCard() {
     this._dataCard.likes.forEach((like) => {
       if (like._id === this._userId) {
@@ -49,7 +49,7 @@ export default class Card {
       }
     });
   }
-  // Отрисовка количества лайков на карточке
+  // Отрисовка количества лайков на карточке при загрузке страницы
   setNumberLikes(data) {
     // if (this._dataCard.likes.length === 0) {
     //   this._card.querySelector('.card__like-number').style.visibility = 'hidden';

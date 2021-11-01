@@ -38,15 +38,13 @@ const userInfo = new UserInfo({
   avatar: avatarUserInfo
 });
 
-// Открытие попапа просмотра карточки
-const handleCardClick = (evt) => {
-  cardViewPopup.open(evt.target);
-}
-
 
 //Создание новой карточки
 const createNewCard = (data) => {
-  const card = new Card(cardTemplate, data,  userId, handleCardClick, {
+  const card = new Card(cardTemplate, data,  userId, {
+    handleCardClick: () => {
+      cardViewPopup.open(data);
+    },
     handleDeleteCard: () => {
       deleteCardPopup.submitRequestDeleteCard(() => {
         api.deleteCard(data)
@@ -61,19 +59,19 @@ const createNewCard = (data) => {
       });
       deleteCardPopup.open();
     },
-    addLike: (data) => {
+    addLike: () => {
       api.addLikeCard(data)
-        .then((data) => {
-          card.setNumberLikes(data);
+        .then((res) => {
+          card.setNumberLikes(res);
         })
         .catch((err) => {
           console.log(`При лайке карточки произошла ошибка: ${err}`);
         });
     },
-    removeLike: (data) => {
+    removeLike: () => {
       api.removeLikeCard(data)
-        .then((data) => {
-          card.setNumberLikes(data);
+        .then((res) => {
+          card.setNumberLikes(res);
         })
         .catch((err) => {
           console.log(`При снятии лайка карточки произошла ошибка: ${err}`);
