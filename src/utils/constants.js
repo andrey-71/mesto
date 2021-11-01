@@ -24,6 +24,9 @@ export const formPopupUserInfo = popupUserInfo.querySelector('.popup__form_type_
 export const formPopupEditAvatar = popupEditAvatar.querySelector('.popup__form_type_edit-avatar');
 export const formPopupAddCards = popupAddCard.querySelector('.popup__form_type_card');
 
+//Кнопка сабмита формы
+export const submitButtonSelector = '.popup__submit-button';
+
 // Данные из профиля
 export const nameUserInfo = document.querySelector('.profile__name');
 export const aboutUserInfo = document.querySelector('.profile__job');

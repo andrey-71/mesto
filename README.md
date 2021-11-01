@@ -1,13 +1,15 @@
 # Место
 
-Проектная работа 8 спринта 4 курса факультета ["Веб-разработчик"](https://practicum.yandex.ru/web/?utm_source=yandex&utm_medium=cpc&utm_campaign=Yan_Sch_RF_Webr_Razrab_Des_Intro_460&utm_content=sty_search:s_none:cid_56600998:gid_4359516496:pid_23387311960:aid_9838725511:crid_0:rid_:p_1:pty_premium:mty_syn:mkw_:dty_desktop:cgcid_0:rn_Москва:rid_213&utm_term=разработка%20web&yclid=4769457341696616776) образовательной платформы [Яндекс.Практикум](https://practicum.yandex.ru/).
+Проектная работа 9 спринта 4 курса факультета ["Веб-разработчик"](https://practicum.yandex.ru/web/?utm_source=yandex&utm_medium=cpc&utm_campaign=Yan_Sch_RF_Webr_Razrab_Des_Intro_460&utm_content=sty_search:s_none:cid_56600998:gid_4359516496:pid_23387311960:aid_9838725511:crid_0:rid_:p_1:pty_premium:mty_syn:mkw_:dty_desktop:cgcid_0:rn_Москва:rid_213&utm_term=разработка%20web&yclid=4769457341696616776) образовательной платформы [Яндекс.Практикум](https://practicum.yandex.ru/).
 
 
 ## Описание проекта:
 Одностраничный веб-сайт, позволяющий пользователям обмениваться фотографиями.
 
+**[Проект на GitHub Pages](https://andrey-71.github.io/mesto/)**
 
 ## Функционал:
+* Получение/отправка данных с сервера;
 * Адаптивный дизайн на разрешениях ширины экрана от `320px`;
 * Ссылки и интерактивные элементы имеют состояние наведения `:hover`;
 * Редактирование информации пользователя;
@@ -60,11 +62,10 @@
 
 
 ## Планы по доработке проекта:
-* Подключение проекта к серверу;
 * Перенос проекта на React;
 
 
 ## Требования к проекту:
-* [Чеклист](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-8/index.html)
+* [Чеклист](https://code.s3.yandex.net/web-developer/checklists/new-program/checklist-9/index.html)
 
 

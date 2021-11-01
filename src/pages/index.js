@@ -21,6 +21,7 @@ import {
   formPopupUserInfo,
   formPopupEditAvatar,
   formPopupAddCards,
+  submitButtonSelector,
   nameUserInfo,
   aboutUserInfo,
   avatarUserInfo,
@@ -43,6 +44,15 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 });
+
+// Функция вывода процесса загрузки данных
+const renderLoading = (isLoading, popup, textButton) => {
+  if(isLoading) {
+    popup.querySelector(submitButtonSelector).textContent = textButton;
+  } else {
+    popup.querySelector(submitButtonSelector).textContent = textButton;
+  }
+}
 
 // Экземпляр класса для работы с данными пользователя
 const userInfo = new UserInfo({
@@ -68,30 +78,42 @@ api.getAppInfo()
 // Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(popupUserInfo,
   function submitUserInfoForm(data) {
+    renderLoading(true, popupUserInfo, 'Сохранение...');
     api.patchUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
       })
-      .catch(err => console.log(`При отправке данных пользователя произошла ошибка: ${err}`));
+      .catch(err => console.log(`При отправке данных пользователя произошла ошибка: ${err}`))
+      .finally(() => {
+        renderLoading(false, popupUserInfo, 'Сохранить')
+      })
   });
 // Попап редактирования аватара пользователя
 const editAvatarPopup = new PopupWithForm(popupEditAvatar,
   function submitUserAvatarForm(data) {
+    renderLoading(true, popupEditAvatar, 'Сохранение...');
     api.patchAvatarUserInfo(data)
       .then((res) => {
         userInfo.setUserAvatar(res);
       })
-      .catch(err => console.log(`При отправке данных аватара пользователя произошла ошибка: ${err}`));
+      .catch(err => console.log(`При отправке данных аватара пользователя произошла ошибка: ${err}`))
+      .finally(() => {
+        renderLoading(false, popupEditAvatar, 'Сохранить')
+      })
   });
 
 // Попап добавления карточки
 const addCardPopup = new PopupWithForm(popupAddCard,
   function submitAddCardForm(data) {
+    renderLoading(true, popupAddCard, 'Сохранение...');
     api.patchNewCard(data)
       .then((res) => {
         createNewCard(res);
       })
-      .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`));
+      .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`))
+      .finally(() => {
+        renderLoading(false, popupAddCard, 'Создать')
+      })
   });
 // Попап удаления карточки
 const deleteCardPopup = new PopupWithDeleteCard(popupDeleteCard);
