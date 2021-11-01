@@ -5,27 +5,30 @@ export default class UserInfo {
     this._userAvatar = avatar;
   }
 
-  // Собрать данные пользователя из инпутов
+  // Получить id пользователя
+  get getUserId() {
+    return this._userId;
+  }
+
+  // Получить данные пользователей
   getUserInfo() {
     return {
       name: this._userName.textContent,
-      info: this._userInfo.textContent
+      info: this._userInfo.textContent,
+      avatar: this._userAvatar.src,
+      // id: this._userId
     }
   }
   // Отрисовать данные пользователя на странице
   setUserInfo(data) {
     this._userName.textContent = data.name;
     this._userInfo.textContent = data.about;
+    // сохранить id пользователя
+    this._userId = data._id;
   }
 
   // Отрисовать аватар пользователя на странице
   setUserAvatar(data) {
     this._userAvatar.src = data.avatar;
-  }
-
-  // Получить id Пользователя
-  userId(data) {
-    const id = data._id;
-    return id;
   }
 }

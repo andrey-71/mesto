@@ -5,6 +5,7 @@ export default class Api {
     this._sendRequestHeaders = options.sendRequestHeaders;
   }
 
+  // Обработчик результата запроса
   _handleResult(res) {
     if (res.ok) {
       return res.json();
@@ -75,4 +76,21 @@ export default class Api {
       .then(res => this._handleResult(res));
   }
 
+  // Установка лайка
+  addLikeCard(data) {
+    return fetch(`${this._serverUrl}cards/likes/${data._id}`, {
+      method: 'PUT',
+      headers: this._sendRequestHeaders,
+    })
+      .then(res => this._handleResult(res));
+  }
+
+  // Снятие лайка
+  removeLikeCard(data) {
+    return fetch(`${this._serverUrl}cards/likes/${data._id}`, {
+      method: 'DELETE',
+      headers: this._receiveRequestHeaders
+    })
+      .then(res => this._handleResult(res));
+  }
 }

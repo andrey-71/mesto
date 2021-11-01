@@ -9,8 +9,8 @@ export default class PopupWithForm extends Popup {
 
   // Закрытие попапа со сбросом формы
   close() {
-    this._formElement.reset();
     super.close();
+    this._formElement.reset();
   }
 
   // Запись данных из инпутов формы

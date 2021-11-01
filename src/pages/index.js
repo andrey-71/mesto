@@ -31,6 +31,12 @@ import {
   validationConfig
 } from '../utils/constants.js';
 
+// Данные пользователя
+const userInfo = new UserInfo({
+  name: nameUserInfo,
+  info: aboutUserInfo,
+  avatar: avatarUserInfo
+});
 
 // Открытие попапа просмотра карточки
 const handleCardClick = (evt) => {
@@ -40,20 +46,41 @@ const handleCardClick = (evt) => {
 
 //Создание новой карточки
 const createNewCard = (data) => {
-  const card = new Card(cardTemplate, data, handleCardClick, {
+  const card = new Card(cardTemplate, data,  userId, handleCardClick, {
     handleDeleteCard: () => {
       deleteCardPopup.submitRequestDeleteCard(() => {
         api.deleteCard(data)
-          .then((res) => {
+          .then(() => {
             card.removeCard();
-            console.log(res.message);
             deleteCardPopup.close();
-        })
-          .catch(err => console.log(`При удалении карточки произошла ошибка: ${err}`));
+          })
+          .catch((err) => {
+            console.log(`При удалении карточки произошла ошибка: ${err}`);
+            deleteCardPopup.close();
+          });
       });
       deleteCardPopup.open();
+    },
+    addLike: (data) => {
+      api.addLikeCard(data)
+        .then((data) => {
+          card.setNumberLikes(data);
+        })
+        .catch((err) => {
+          console.log(`При лайке карточки произошла ошибка: ${err}`);
+        });
+    },
+    removeLike: (data) => {
+      api.removeLikeCard(data)
+        .then((data) => {
+          card.setNumberLikes(data);
+        })
+        .catch((err) => {
+          console.log(`При снятии лайка карточки произошла ошибка: ${err}`);
+        });
     }
   });
+
   const cardElement = card.createCard();
   cardList.addItem(cardElement);
 };
@@ -78,14 +105,15 @@ const api = new Api({
   }
 });
 
+let userId;
 // Загрузка данных профиля
 api.getUserInfo()
   .then((res) => {
     userInfo.setUserInfo(res);
     userInfo.setUserAvatar(res);
+    userId = res._id;
   })
   .catch(err => console.log(`При загрузке данных пользователя произошла ошибка: ${err}`));
-
 // Загрузка карточек
 api.getInitialCards()
   .then((res) => {
@@ -94,12 +122,6 @@ api.getInitialCards()
   })
   .catch(err => console.log(`При загрузке данных карточек произошла ошибка: ${err}`));
 
-// Данные пользователя
-const userInfo = new UserInfo({
-  name: nameUserInfo,
-  info: aboutUserInfo,
-  avatar: avatarUserInfo
-});
 
 // Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(popupUserInfo,
