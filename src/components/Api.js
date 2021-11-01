@@ -5,15 +5,12 @@ export default class Api {
     this._sendRequestHeaders = options.sendRequestHeaders;
   }
 
-  // Обработчик результата запроса
-  _handleResult(res) {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`"${res.status} ${res.statusText}"`);
+  // Общий запрос всех данных с сервера
+  getAppInfo() {
+    return Promise.all([this.getUserInfo(), this.getInitialCards()]);
   }
 
-  // Получение данных пользователя
+   // Получение данных пользователя
   getUserInfo() {
     return fetch(`${this._serverUrl}users/me`, {
       headers: this._receiveRequestHeaders
@@ -92,5 +89,13 @@ export default class Api {
       headers: this._receiveRequestHeaders
     })
       .then(res => this._handleResult(res));
+  }
+
+  // Обработчик результата запроса
+  _handleResult(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`"${res.status} ${res.statusText}"`);
   }
 }

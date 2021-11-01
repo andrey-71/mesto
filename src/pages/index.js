@@ -31,67 +31,8 @@ import {
   validationConfig
 } from '../utils/constants.js';
 
-// Данные пользователя
-const userInfo = new UserInfo({
-  name: nameUserInfo,
-  info: aboutUserInfo,
-  avatar: avatarUserInfo
-});
 
-
-//Создание новой карточки
-const createNewCard = (data) => {
-  const card = new Card(cardTemplate, data,  userId, {
-    handleCardClick: () => {
-      cardViewPopup.open(data);
-    },
-    handleDeleteCard: () => {
-      deleteCardPopup.submitRequestDeleteCard(() => {
-        api.deleteCard(data)
-          .then(() => {
-            card.removeCard();
-            deleteCardPopup.close();
-          })
-          .catch((err) => {
-            console.log(`При удалении карточки произошла ошибка: ${err}`);
-            deleteCardPopup.close();
-          });
-      });
-      deleteCardPopup.open();
-    },
-    addLike: () => {
-      api.addLikeCard(data)
-        .then((res) => {
-          card.setNumberLikes(res);
-        })
-        .catch((err) => {
-          console.log(`При лайке карточки произошла ошибка: ${err}`);
-        });
-    },
-    removeLike: () => {
-      api.removeLikeCard(data)
-        .then((res) => {
-          card.setNumberLikes(res);
-        })
-        .catch((err) => {
-          console.log(`При снятии лайка карточки произошла ошибка: ${err}`);
-        });
-    }
-  });
-
-  const cardElement = card.createCard();
-  cardList.addItem(cardElement);
-};
-
-// Добавление карточек на страницу
-const cardList = new Section({
-  renderer: (data) => {
-    createNewCard(data);
-  }
-}, cardsElement);
-
-
-// Работа с API сервера
+// Экземпляр класса для работы с сервером
 const api = new Api({
   serverUrl: 'https://mesto.nomoreparties.co/v1/cohort-29/',
   receiveRequestHeaders: {
@@ -103,23 +44,26 @@ const api = new Api({
   }
 });
 
-let userId;
-// Загрузка данных профиля
-api.getUserInfo()
-  .then((res) => {
-    userInfo.setUserInfo(res);
-    userInfo.setUserAvatar(res);
-    userId = res._id;
-  })
-  .catch(err => console.log(`При загрузке данных пользователя произошла ошибка: ${err}`));
-// Загрузка карточек
-api.getInitialCards()
-  .then((res) => {
-    cardList.setItem(res);
-    console.log(res);
-  })
-  .catch(err => console.log(`При загрузке данных карточек произошла ошибка: ${err}`));
 
+// Загрузка данных с сервера
+let userId;// Перемення для хранения id пользователя
+api.getAppInfo()
+  .then(([getUserInfo, getInitialCards]) => {
+    userInfo.setUserInfo(getUserInfo);
+    userInfo.setUserAvatar(getUserInfo);
+    userId = getUserInfo._id;
+
+    cardList.setItem(getInitialCards);
+  })
+  .catch(err => console.log(`При загрузке данных с сервера произошла ошибка: ${err}`));
+
+
+// Экземпляр класса для работы с данными пользователя
+const userInfo = new UserInfo({
+  name: nameUserInfo,
+  info: aboutUserInfo,
+  avatar: avatarUserInfo
+});
 
 // Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(popupUserInfo,
@@ -127,7 +71,7 @@ const userInfoPopup = new PopupWithForm(popupUserInfo,
     api.patchUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
-    })
+      })
       .catch(err => console.log(`При отправке данных пользователя произошла ошибка: ${err}`));
   });
 // Попап редактирования аватара пользователя
@@ -139,6 +83,7 @@ const editAvatarPopup = new PopupWithForm(popupEditAvatar,
       })
       .catch(err => console.log(`При отправке данных аватара пользователя произошла ошибка: ${err}`));
   });
+
 // Попап добавления карточки
 const addCardPopup = new PopupWithForm(popupAddCard,
   function submitAddCardForm(data) {
@@ -153,6 +98,13 @@ const deleteCardPopup = new PopupWithDeleteCard(popupDeleteCard);
 // Попап просмотра фотографии
 const cardViewPopup = new PopupWithImage(popupViewCard);
 
+// Экземпялр класса для вывода карточек на страницу
+const cardList = new Section({
+  renderer: (data) => {
+    createNewCard(data);
+  }
+}, cardsElement);
+
 
 // Валидация формы профиля
 const validatorFormEditProfile = new FormValidator(validationConfig, formPopupUserInfo);
@@ -163,6 +115,55 @@ validatorFormEditAvatar.enableValidation();
 // Валидация формы карточки
 const validatorFormAddCards = new FormValidator(validationConfig, formPopupAddCards);
 validatorFormAddCards.enableValidation();
+
+
+//Создание новой карточки
+const createNewCard = (data) => {
+  const card = new Card(cardTemplate, data,  userId, {
+    // открытие попапа с изображением карточки
+    handleCardClick: () => {
+      cardViewPopup.open(data);
+    },
+    // удаление карточки
+    handleDeleteCard: () => {
+      deleteCardPopup.submitRequestDeleteCard(() => {
+        api.deleteCard(data)
+          .then(() => {
+            card.removeCard();
+            deleteCardPopup.close();
+          })
+          .catch((err) => {
+            console.log(`При удалении карточки произошла ошибка: ${err}`);
+            deleteCardPopup.close();
+          });
+      });
+      deleteCardPopup.open();
+    },
+    // постановка лайка
+    addLike: () => {
+      api.addLikeCard(data)
+        .then((res) => {
+          card.setNumberLikes(res);
+        })
+        .catch((err) => {
+          console.log(`При лайке карточки произошла ошибка: ${err}`);
+        });
+    },
+    // удаление лайка
+    removeLike: () => {
+      api.removeLikeCard(data)
+        .then((res) => {
+          card.setNumberLikes(res);
+        })
+        .catch((err) => {
+          console.log(`При снятии лайка карточки произошла ошибка: ${err}`);
+        });
+    }
+  });
+  // создание карточки и отрисовка на странице
+  const cardElement = card.createCard();
+  cardList.addItem(cardElement);
+};
 
 
 // Обработчики события для попапов:
