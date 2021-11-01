@@ -44,6 +44,13 @@ const api = new Api({
   }
 });
 
+// Экземпляр класса для работы с данными пользователя
+const userInfo = new UserInfo({
+  name: nameUserInfo,
+  info: aboutUserInfo,
+  avatar: avatarUserInfo
+});
+
 
 // Загрузка данных с сервера
 let userId;// Перемення для хранения id пользователя
@@ -57,13 +64,6 @@ api.getAppInfo()
   })
   .catch(err => console.log(`При загрузке данных с сервера произошла ошибка: ${err}`));
 
-
-// Экземпляр класса для работы с данными пользователя
-const userInfo = new UserInfo({
-  name: nameUserInfo,
-  info: aboutUserInfo,
-  avatar: avatarUserInfo
-});
 
 // Попап редактирования профиля
 const userInfoPopup = new PopupWithForm(popupUserInfo,
