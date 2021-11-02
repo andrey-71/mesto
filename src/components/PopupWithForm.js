@@ -4,7 +4,7 @@ export default class PopupWithForm extends Popup {
   constructor(popupSelector, submitForm) {
     super(popupSelector);
     this._submitForm = submitForm;
-    this._formElement = this._popupSelector.querySelector('.popup__form');
+    this._formElement = this._popup.querySelector('.popup__form');
   }
 
   // Закрытие попапа со сбросом формы

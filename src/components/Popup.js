@@ -1,7 +1,7 @@
 export default class Popup {
   constructor(popupSelector) {
-    this._popupSelector = popupSelector;
-    this._closeButton = this._popupSelector.querySelector('.popup__close');
+    this._popup = document.querySelector(popupSelector);
+    this._closeButton = this._popup.querySelector('.popup__close');
     this._handleEscClose = this._handleEscClose.bind(this);
     this._handleOverlayClose = this._handleOverlayClose.bind(this);
     this.close = this.close.bind(this);
@@ -16,7 +16,7 @@ export default class Popup {
 
   // Закртыие попапа при клике на overlay
   _handleOverlayClose(evt) {
-    if (this._popupSelector === evt.target) {
+    if (this._popup === evt.target) {
       this.close();
     }
   }
@@ -28,15 +28,15 @@ export default class Popup {
 
   // Открытие попапа с установкой слушателей
   open() {
-    this._popupSelector.classList.add('popup_active');
+    this._popup.classList.add('popup_active');
     document.addEventListener('keyup', this._handleEscClose);
-    this._popupSelector.addEventListener('mousedown', this._handleOverlayClose);
+    this._popup.addEventListener('mousedown', this._handleOverlayClose);
   }
 
   // Закрытие попапа со снятием слушателей
   close() {
-    this._popupSelector.classList.remove('popup_active');
+    this._popup.classList.remove('popup_active');
     document.removeEventListener('keyup', this._handleEscClose);
-    this._popupSelector.removeEventListener('mousedown', this._handleOverlayClose);
+    this._popup.removeEventListener('mousedown', this._handleOverlayClose);
   }
 }

@@ -8,6 +8,13 @@ export const validationConfig = {
 };
 
 // Попапы
+export const popupSelector = {
+  userInfo: '.popup_type_edit-profile',
+  editAvatar: '.popup_type_edit-avatar',
+  addCard: '.popup_type_add-card',
+  deleteCard: '.popup_type_delete-card',
+  viewCard: '.popup_type_card-view'
+}
 export const popupUserInfo = document.querySelector('.popup_type_edit-profile');
 export const popupEditAvatar = document.querySelector('.popup_type_edit-avatar')
 export const popupAddCard = document.querySelector('.popup_type_add-card');

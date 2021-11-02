@@ -10,6 +10,7 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
 import {
+  popupSelector,
   popupUserInfo,
   popupEditAvatar,
   popupAddCard,
@@ -46,11 +47,11 @@ const api = new Api({
 });
 
 // Функция вывода процесса загрузки данных
-const renderLoading = (isLoading, popup, textButton) => {
+const renderLoading = (isLoading, popupSelector, textButton) => {
   if(isLoading) {
-    popup.querySelector(submitButtonSelector).textContent = textButton;
+    document.querySelector(popupSelector).querySelector(submitButtonSelector).textContent = textButton;
   } else {
-    popup.querySelector(submitButtonSelector).textContent = textButton;
+    document.querySelector(popupSelector).querySelector(submitButtonSelector).textContent = textButton;
   }
 }
 
@@ -76,49 +77,49 @@ api.getAppInfo()
 
 
 // Попап редактирования профиля
-const userInfoPopup = new PopupWithForm(popupUserInfo,
+const userInfoPopup = new PopupWithForm(popupSelector.userInfo,
   function submitUserInfoForm(data) {
-    renderLoading(true, popupUserInfo, 'Сохранение...');
+    renderLoading(true, popupSelector.userInfo, 'Сохранение...');
     api.patchUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
       })
       .catch(err => console.log(`При отправке данных пользователя произошла ошибка: ${err}`))
       .finally(() => {
-        renderLoading(false, popupUserInfo, 'Сохранить')
+        renderLoading(false, popupSelector.userInfo, 'Сохранить')
       })
   });
 // Попап редактирования аватара пользователя
-const editAvatarPopup = new PopupWithForm(popupEditAvatar,
+const editAvatarPopup = new PopupWithForm(popupSelector.editAvatar,
   function submitUserAvatarForm(data) {
-    renderLoading(true, popupEditAvatar, 'Сохранение...');
+    renderLoading(true, popupSelector.editAvatar, 'Сохранение...');
     api.patchAvatarUserInfo(data)
       .then((res) => {
         userInfo.setUserAvatar(res);
       })
       .catch(err => console.log(`При отправке данных аватара пользователя произошла ошибка: ${err}`))
       .finally(() => {
-        renderLoading(false, popupEditAvatar, 'Сохранить')
+        renderLoading(false, popupSelector.editAvatar, 'Сохранить')
       })
   });
 
 // Попап добавления карточки
-const addCardPopup = new PopupWithForm(popupAddCard,
+const addCardPopup = new PopupWithForm(popupSelector.addCard,
   function submitAddCardForm(data) {
-    renderLoading(true, popupAddCard, 'Сохранение...');
+    renderLoading(true, popupSelector.addCard, 'Сохранение...');
     api.patchNewCard(data)
       .then((res) => {
         createNewCard(res);
       })
       .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`))
       .finally(() => {
-        renderLoading(false, popupAddCard, 'Создать')
+        renderLoading(false, popupSelector.addCard, 'Создать')
       })
   });
 // Попап удаления карточки
-const deleteCardPopup = new PopupWithDeleteCard(popupDeleteCard);
+const deleteCardPopup = new PopupWithDeleteCard(popupSelector.deleteCard);
 // Попап просмотра фотографии
-const cardViewPopup = new PopupWithImage(popupViewCard);
+const cardViewPopup = new PopupWithImage(popupSelector.viewCard);
 
 // Экземпялр класса для вывода карточек на страницу
 const cardList = new Section({
