@@ -1,19 +1,20 @@
 export default class FormValidator {
-  constructor(config, formElement) {
+  constructor(popupSelector, config) {
+    this._popup = document.querySelector(popupSelector);
+    this._form = this._popup.querySelector(config.formSelector);
     this._inputSelector = config.inputSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
-    this._formElement = formElement;
-    this._inputList = Array.from(this._formElement
+    this._inputList = Array.from(this._form
       .querySelectorAll(this._inputSelector));
-    this._submitButton = this._formElement
+    this._submitButton = this._form
       .querySelector(config.submitButtonSelector);
   }
 
   // Показать текст ошибки валидации
   _showInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
@@ -21,7 +22,7 @@ export default class FormValidator {
 
   // Скрыть текст ошибки валидации
   _hideInputError(inputElement) {
-    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
@@ -67,7 +68,8 @@ export default class FormValidator {
   // Переключение состояния кнопки и установка слушателя на инпуты
   _setEventListeners() {
     this._toggleButtonState();
-
+    console.log(this._popup);
+    console.log(this._form);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);

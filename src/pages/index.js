@@ -11,17 +11,9 @@ import Api from '../components/Api.js';
 
 import {
   popupSelector,
-  popupUserInfo,
-  popupEditAvatar,
-  popupAddCard,
-  popupDeleteCard,
-  popupViewCard,
   openPopupUserInfo,
   openPopupAddCard,
   openPopupEditAvatar,
-  formPopupUserInfo,
-  formPopupEditAvatar,
-  formPopupAddCards,
   submitButtonSelector,
   nameUserInfo,
   aboutUserInfo,
@@ -110,6 +102,7 @@ const addCardPopup = new PopupWithForm(popupSelector.addCard,
     api.patchNewCard(data)
       .then((res) => {
         createNewCard(res);
+        cardList.addItem(createNewCard(res));
         addCardPopup.close();
       })
       .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`))
@@ -131,13 +124,13 @@ const cardList = new Section({
 
 
 // Валидация формы профиля
-const validatorFormEditProfile = new FormValidator(validationConfig, formPopupUserInfo);
+const validatorFormEditProfile = new FormValidator(popupSelector.userInfo, validationConfig);
 validatorFormEditProfile.enableValidation();
 // Валидация формы редактирования аватара
-const validatorFormEditAvatar = new FormValidator(validationConfig, formPopupEditAvatar);
+const validatorFormEditAvatar = new FormValidator(popupSelector.editAvatar, validationConfig);
 validatorFormEditAvatar.enableValidation();
 // Валидация формы карточки
-const validatorFormAddCards = new FormValidator(validationConfig, formPopupAddCards);
+const validatorFormAddCards = new FormValidator(popupSelector.addCard, validationConfig);
 validatorFormAddCards.enableValidation();
 
 
