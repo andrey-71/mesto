@@ -65,8 +65,6 @@ export default class FormValidator {
   // Переключение состояния кнопки и установка слушателя на инпуты
   _setEventListeners() {
     this._toggleButtonState();
-    console.log(this._popup);
-    console.log(this._form);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
