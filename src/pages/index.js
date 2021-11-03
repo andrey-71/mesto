@@ -122,10 +122,10 @@ const deleteCardPopup = new PopupWithDeleteCard(popupSelector.deleteCard);
 // Попап просмотра фотографии
 const cardViewPopup = new PopupWithImage(popupSelector.viewCard);
 
-// Экземпялр класса для вывода карточек на страницу
+// Экземпялр класса для отрисовки карточек на странице
 const cardList = new Section({
   renderer: (data) => {
-    createNewCard(data);
+    cardList.addItem(createNewCard(data));
   }
 }, cardsElement);
 
@@ -158,7 +158,6 @@ const createNewCard = (data) => {
           })
           .catch((err) => {
             console.log(`При удалении карточки произошла ошибка: ${err}`);
-            deleteCardPopup.close();
           });
       });
       deleteCardPopup.open();
@@ -186,9 +185,8 @@ const createNewCard = (data) => {
         });
     }
   });
-  // создание карточки и отрисовка на странице
-  const cardElement = card.createCard();
-  cardList.addItem(cardElement);
+  // Созданная карточка
+  return card.createCard();
 };
 
 
