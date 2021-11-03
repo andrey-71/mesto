@@ -18,6 +18,8 @@ export default class Card {
     this._putLike = addLike;
     this._deleteLike = removeLike;
     this._card = this._cardSelector.querySelector('.card').cloneNode(true);
+    this._cardImage = this._card.querySelector('.card__image');
+    this._cardCaption = this._card.querySelector('.card__caption');
     this._toggleStateLikeOnServer = this._toggleStateLikeOnServer.bind(this);
     this.removeCard = this.removeCard.bind(this);
   }
@@ -87,9 +89,9 @@ export default class Card {
 
   // Отрисовка карточек на странице
   _generateCard() {
-    this._card.querySelector('.card__image').src = this._dataCard.link;
-    this._card.querySelector('.card__caption').textContent = this._dataCard.name;
-    this._card.querySelector('.card__image').alt = this._dataCard.name;
+    this._cardImage.src = this._dataCard.link;
+    this._cardCaption.textContent = this._dataCard.name;
+    this._cardImage.alt = this._dataCard.name;
     this._toggleVisibilityDeleteIcon();
     this._setLikesCard();
     this.setNumberLikes(this._dataCard);
