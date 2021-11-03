@@ -169,6 +169,7 @@ const createNewCard = (data) => {
     addLike: () => {
       api.addLikeCard(data)
         .then((res) => {
+          card.toggleStateLikeOnClient();
           card.setNumberLikes(res);
         })
         .catch((err) => {
@@ -179,6 +180,7 @@ const createNewCard = (data) => {
     removeLike: () => {
       api.removeLikeCard(data)
         .then((res) => {
+          card.toggleStateLikeOnClient();
           card.setNumberLikes(res);
         })
         .catch((err) => {
