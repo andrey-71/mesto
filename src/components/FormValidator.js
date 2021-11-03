@@ -2,14 +2,11 @@ export default class FormValidator {
   constructor(popupSelector, config) {
     this._popup = document.querySelector(popupSelector);
     this._form = this._popup.querySelector(config.formSelector);
-    this._inputSelector = config.inputSelector;
+    this._inputList = Array.from(this._form.querySelectorAll(config.inputSelector));
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
-    this._inputList = Array.from(this._form
-      .querySelectorAll(this._inputSelector));
-    this._submitButton = this._form
-      .querySelector(config.submitButtonSelector);
+    this._submitButton = this._form.querySelector(config.submitButtonSelector);
   }
 
   // Показать текст ошибки валидации
