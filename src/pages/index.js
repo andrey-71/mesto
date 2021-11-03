@@ -64,12 +64,10 @@ const userInfo = new UserInfo({
 
 
 // Загрузка данных с сервера
-let userId;// Перемення для хранения id пользователя
 api.getAppInfo()
   .then(([getUserInfo, getInitialCards]) => {
     userInfo.setUserInfo(getUserInfo);
     userInfo.setUserAvatar(getUserInfo);
-    userId = getUserInfo._id;
 
     cardList.renderItems(getInitialCards);
   })
@@ -145,7 +143,7 @@ validatorFormAddCards.enableValidation();
 
 //Создание новой карточки
 const createNewCard = (data) => {
-  const card = new Card(cardTemplate, data,  userId, {
+  const card = new Card(cardTemplate, data,  userInfo.getUserId, {
     // открытие попапа с изображением карточки
     handleCardClick: () => {
       cardViewPopup.open(data);

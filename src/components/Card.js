@@ -40,7 +40,6 @@ export default class Card {
   }
 
 
-
   // Поставить лайк
   _addLikeCard() {
     // this._card.querySelector('.card__like').classList.add('card__like_active');

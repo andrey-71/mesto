@@ -15,8 +15,7 @@ export default class UserInfo {
     return {
       name: this._userName.textContent,
       info: this._userInfo.textContent,
-      avatar: this._userAvatar.src,
-      // id: this._userId
+      avatar: this._userAvatar.src
     }
   }
   // Отрисовать данные пользователя на странице
