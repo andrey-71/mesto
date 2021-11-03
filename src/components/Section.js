@@ -10,7 +10,7 @@ export default class Section {
   }
 
   // Создание карточек
-  setItem(data) {
+  renderItems(data) {
     data.reverse().forEach(item => {
       this._renderer(item);
     });

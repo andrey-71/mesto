@@ -71,7 +71,7 @@ api.getAppInfo()
     userInfo.setUserAvatar(getUserInfo);
     userId = getUserInfo._id;
 
-    cardList.setItem(getInitialCards);
+    cardList.renderItems(getInitialCards);
   })
   .catch(err => console.log(`При загрузке данных с сервера произошла ошибка: ${err}`));
 
@@ -83,6 +83,7 @@ const userInfoPopup = new PopupWithForm(popupSelector.userInfo,
     api.patchUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
+        userInfoPopup.close();
       })
       .catch(err => console.log(`При отправке данных пользователя произошла ошибка: ${err}`))
       .finally(() => {
@@ -96,6 +97,7 @@ const editAvatarPopup = new PopupWithForm(popupSelector.editAvatar,
     api.patchAvatarUserInfo(data)
       .then((res) => {
         userInfo.setUserAvatar(res);
+        editAvatarPopup.close();
       })
       .catch(err => console.log(`При отправке данных аватара пользователя произошла ошибка: ${err}`))
       .finally(() => {
@@ -110,6 +112,7 @@ const addCardPopup = new PopupWithForm(popupSelector.addCard,
     api.patchNewCard(data)
       .then((res) => {
         createNewCard(res);
+        addCardPopup.close();
       })
       .catch(err => console.log(`При отправке данных карточки произошла ошибка: ${err}`))
       .finally(() => {
