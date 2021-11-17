@@ -53,13 +53,38 @@
 * Настройка окружения для разработки.
 
 
-## Инструкция по установке:
+## Инструкция по локальной установке:
 * Клонировать репозиторий:
 
     ```
     git clone https://github.com/andrey-71/mesto.git
     ```
-
+* На компьютере должен быть установлен [Node.js](https://nodejs.org/en/download/):
+* Для полноценной работы с проектом и корректной сборки необходимо установить следующие пакеты:
+  ```
+  npm i webpack --save-dev
+  npm i webpack-cli --save-dev
+  npm i webpack-dev-server --save-dev
+  npm i @babel/core --save-dev
+  npm i @babel/preset-env --save-dev
+  npm i core-js --save
+  npm i babel-loader --save-dev
+  npm i html-webpack-plugin --save-dev
+  npm i clean-webpack-plugin --save-dev
+  npm i css-loader --save-dev
+  npm i mini-css-extract-plugin --save-dev
+  npm i postcss-loader --save-dev
+  npm i autoprefixer --save-dev
+  npm i cssnano --save-dev
+  ```
+* Запуск проекта на локальном сервере
+  ```
+  npm run dev
+  ```
+* Сборка проекта
+  ```
+  npm run build
+  ```
 
 ## Планы по доработке проекта:
 * Перенос проекта на React;
